@@ -1,0 +1,42 @@
+<?php
+class History extends AppModel {
+
+    var $name = 'History';
+
+    function getPage($page = 1, $limit = null, $conditions = array(), $order = array('created' => 'desc'), $fields=null) {
+        $array = array(
+            'limit' => $limit,
+            'page' => $page,
+            'order' => $order,
+            'conditions' => $conditions,
+            'fields' => $fields
+        );
+        return $this->find('all', $array);
+    }
+
+
+    function getHistory($id=null,$fields=null) {
+        $id = new MongoId($id);
+        $dk = array('_id' => $id);
+        $return = $this->find('first', array('conditions' => $dk,'fields'=>$fields));
+        return $return;
+    }
+
+    function getHistoryByDriver($idDriver,$fields=null) {
+        $dk = array('idDriverStaff' => $idDriver);
+        $return = $this->find('first', array('conditions' => $dk,'fields'=>$fields));
+        return $return;
+    }
+
+    function getDriverAroundDistance($distance,$fields=null)
+    {
+        $conditions['distance']= array('$gte' => $distance);
+
+        $return = $this->find('all', array('conditions' => $conditions, 'fields'=>$fields));
+
+        return $return;
+    }
+
+}
+
+?>

@@ -1,0 +1,1 @@
+<?php getFileTheme('document/viewDetails.php'); ?>

@@ -1,0 +1,1 @@
+Link sitemap: <?php echo $urlHomes.'app/Plugin/mantanHotel/sitemapHotel.xml';?>

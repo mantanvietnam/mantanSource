@@ -1,0 +1,40 @@
+.tableList{
+	width: 100%;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #bcbcbc;
+    border-left: 1px solid #bcbcbc;
+}
+.tableList td,.tableList th{
+	padding: 5px;
+	border-bottom: 1px solid #bcbcbc;
+    border-right: 1px solid #bcbcbc;
+}
+.tableList td td{
+	padding: 5px;
+	border: none !important;
+}
+.listComponents{clear: both;list-style: none;}
+.titleProperties{clear: both;margin: 0;padding-top: 10px;}
+.listComponents li{margin-right: 10px;}
+.noBorder td{
+	border: none !important;
+}
+#tabs{
+		width: 100%;
+	}
+.tableShow td{
+	padding: 10px;
+	word-break: break-all;
+}
+.classInput{
+	width: 85%;
+}
+.textRed{
+	color: red;
+}
+.tableList th{
+	font-weight: bold;
+	text-align: center;
+}

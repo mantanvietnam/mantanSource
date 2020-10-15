@@ -1,0 +1,88 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule    ^$ app/webroot/    [L]
+   
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule    (.*) app/webroot/$1 [L]
+</IfModule>
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+# Or, compress certain file types by extension:
+<files *.html>
+	SetOutputFilter DEFLATE
+</files>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css A31536000
+ExpiresByType text/x-component A31536000
+ExpiresByType application/x-javascript A31536000
+ExpiresByType application/javascript A31536000
+ExpiresByType text/javascript A31536000
+ExpiresByType text/x-js A31536000
+ExpiresByType text/html A3600
+ExpiresByType text/richtext A3600
+ExpiresByType image/svg+xml A3600
+ExpiresByType text/plain A3600
+ExpiresByType text/xsd A3600
+ExpiresByType text/xsl A3600
+ExpiresByType text/xml A3600
+ExpiresByType video/asf A31536000
+ExpiresByType video/avi A31536000
+ExpiresByType image/bmp A31536000
+ExpiresByType application/java A31536000
+ExpiresByType video/divx A31536000
+ExpiresByType application/msword A31536000
+ExpiresByType application/vnd.ms-fontobject A31536000
+ExpiresByType application/x-msdownload A31536000
+ExpiresByType image/gif A31536000
+ExpiresByType application/x-gzip A31536000
+ExpiresByType image/x-icon A31536000
+ExpiresByType image/jpeg A31536000
+ExpiresByType application/json A31536000
+ExpiresByType application/vnd.ms-access A31536000
+ExpiresByType audio/midi A31536000
+ExpiresByType video/quicktime A31536000
+ExpiresByType audio/mpeg A31536000
+ExpiresByType video/mp4 A31536000
+ExpiresByType video/mpeg A31536000
+ExpiresByType application/vnd.ms-project A31536000
+ExpiresByType application/x-font-otf A31536000
+ExpiresByType application/vnd.ms-opentype A31536000
+ExpiresByType application/vnd.oasis.opendocument.database A31536000
+ExpiresByType application/vnd.oasis.opendocument.chart A31536000
+ExpiresByType application/vnd.oasis.opendocument.formula A31536000
+ExpiresByType application/vnd.oasis.opendocument.graphics A31536000
+ExpiresByType application/vnd.oasis.opendocument.presentation A31536000
+ExpiresByType application/vnd.oasis.opendocument.spreadsheet A31536000
+ExpiresByType application/vnd.oasis.opendocument.text A31536000
+ExpiresByType audio/ogg A31536000
+ExpiresByType application/pdf A31536000
+ExpiresByType image/png A31536000
+ExpiresByType application/vnd.ms-powerpoint A31536000
+ExpiresByType audio/x-realaudio A31536000
+ExpiresByType image/svg+xml A31536000
+ExpiresByType application/x-shockwave-flash A31536000
+ExpiresByType application/x-tar A31536000
+ExpiresByType image/tiff A31536000
+ExpiresByType application/x-font-ttf A31536000
+ExpiresByType application/vnd.ms-opentype A31536000
+ExpiresByType audio/wav A31536000
+ExpiresByType audio/wma A31536000
+ExpiresByType application/vnd.ms-write A31536000
+ExpiresByType application/font-woff A31536000
+ExpiresByType application/vnd.ms-excel A31536000
+ExpiresByType application/zip A31536000
+</IfModule>

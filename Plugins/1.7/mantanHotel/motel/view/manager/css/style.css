@@ -1,0 +1,12 @@
+.footer {
+    font-weight: bold;
+}
+h2, h3 {
+    text-transform: uppercase;
+}
+.table-responsive {
+    margin-top: 2em;
+}
+.container {
+    max-width: 435px;
+}

@@ -1,0 +1,1 @@
+<?php getFileTheme('mantanHotel/bestHotel.php'); ?>

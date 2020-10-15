@@ -1,0 +1,1 @@
+<?php getFileTheme('project/project.php'); ?>

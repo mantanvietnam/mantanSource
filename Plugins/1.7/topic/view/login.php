@@ -1,0 +1,1 @@
+<?php getFileTheme('topic/login.php'); ?>

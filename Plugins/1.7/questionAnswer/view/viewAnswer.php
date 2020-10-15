@@ -1,0 +1,1 @@
+<?php getFileTheme('questionAnswer/viewAnswer.php'); ?>

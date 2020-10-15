@@ -1,0 +1,1 @@
+<?php getFileTheme('subscribeRoyal/add_subscribe.php'); ?>

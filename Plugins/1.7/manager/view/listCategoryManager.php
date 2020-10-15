@@ -1,0 +1,1 @@
+<?php getFileTheme('manager/listCategoryManager.php'); ?>

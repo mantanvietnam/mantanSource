@@ -1,0 +1,214 @@
+2016-09-16 10:29:45 Error: Fatal Error (4): syntax error, unexpected ';', expecting ')' in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/MantanFunctions.php, line 542]
+2016-09-16 10:29:45 Error: [FatalErrorException] syntax error, unexpected ';', expecting ')'
+Request URL: /
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/home/mantanvie...', 542)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/home/mantanvie...', 542, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/home/mantanvie...', 542, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-20 13:12:23 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/change_theme.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/change_theme.ctp',
+)
+Request URL: /options/changeTheme
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OptionsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-20 13:12:48 Error: Fatal Error (4): syntax error, unexpected '$slugNew' (T_VARIABLE) in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Model/Slug.php, line 17]
+2016-12-20 13:12:48 Error: [FatalErrorException] syntax error, unexpected '$slugNew' (T_VARIABLE)
+Request URL: /notices/saveNotices
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/home/mantanvie...', 17)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/home/mantanvie...', 17, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/home/mantanvie...', 17, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-20 13:27:14 Error: Fatal Error (1): Call to a member function saveSlug() on a non-object in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/NoticesController.php, line 330]
+2016-12-20 13:27:14 Error: [FatalErrorException] Call to a member function saveSlug() on a non-object
+Request URL: /notices/savePages
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/home/mantanvie...', 330)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/home/mantanvie...', 330, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/home/mantanvie...', 330, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:26:50 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:26:50 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:33:04 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:33:04 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:34:54 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:34:54 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:36:18 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:36:18 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:36:24 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:36:24 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:37:55 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:37:55 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:38:05 Error: Fatal Error (1): Call to undefined method AlbumsController::find() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/AlbumsController.php, line 195]
+2016-12-21 00:38:05 Error: [FatalErrorException] Call to undefined method AlbumsController::find()
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 195)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 195, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-21 00:39:40 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Albums/delete_album.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Albums/delete_album.ctp',
+)
+Request URL: /albums/deleteAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-21 00:42:17 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Notices/delete_notice.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Notices/delete_notice.ctp',
+)
+Request URL: /notices/deleteNotice
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(NoticesController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-21 00:42:23 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Notices/delete_notice.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Notices/delete_notice.ctp',
+)
+Request URL: /notices/deleteNotice
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(NoticesController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-21 00:43:57 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Videos/delete_data.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Videos/delete_data.ctp',
+)
+Request URL: /videos/deleteData
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(VideosController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-21 09:28:55 Error: Fatal Error (1): Call to undefined method NoticesController::curPageURL() in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Controller/NoticesController.php, line 465]
+2016-12-21 09:28:55 Error: [FatalErrorException] Call to undefined method NoticesController::curPageURL()
+Request URL: /test.html
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/home/mantanvie...', 465)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/home/mantanvie...', 465, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/home/mantanvie...', 465, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-27 03:37:34 Error: Fatal Error (1): Call to a member function saveSlug() on a non-object in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Model/Album.php, line 49]
+2016-12-27 03:37:34 Error: [FatalErrorException] Call to a member function saveSlug() on a non-object
+Request URL: /albums/saveAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/home/mantanvie...', 49)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/home/mantanvie...', 49, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/home/mantanvie...', 49, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-27 03:40:30 Error: Fatal Error (1): Class 'Slug' not found in [/home/mantanvietnam/web/dev.mantansource.com/public_html/app/Model/Album.php, line 36]
+2016-12-27 03:40:30 Error: [FatalErrorException] Class 'Slug' not found
+Request URL: /albums/saveAlbum
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Slug' no...', '/home/mantanvie...', 36)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Slug' no...', '/home/mantanvie...', 36, Array)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'Slug' no...', '/home/mantanvie...', 36, Array)
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-12-27 04:08:19 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/delete_catagery.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/delete_catagery.ctp',
+)
+Request URL: /options/deleteCatagery
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OptionsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-12-27 04:10:49 Error: [MissingViewException] View file "/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/delete_catagery.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/home/mantanvietnam/web/dev.mantansource.com/public_html/app/View/Options/delete_catagery.ctp',
+)
+Request URL: /options/deleteCatagery
+Stack Trace:
+#0 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/View/View.php(462): View->_getViewFileName(NULL)
+#1 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /home/mantanvietnam/web/dev.mantansource.com/public_html/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OptionsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/mantanvietnam/web/dev.mantansource.com/public_html/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

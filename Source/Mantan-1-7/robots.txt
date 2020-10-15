@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /lib/*
+Disallow: /plugins/*
+Disallow: /vendors/*
+Disallow: /app/Config/*
+Disallow: /app/Console/*
+Disallow: /app/Controller/*
+Disallow: /app/Language/*
+Disallow: /app/Model/*
+Disallow: /app/Plugin/*
+Disallow: /app/Theme/*
+Disallow: /app/View/*
+Disallow: /app/tmp/*
+

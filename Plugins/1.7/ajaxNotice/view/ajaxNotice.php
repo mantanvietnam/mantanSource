@@ -1,0 +1,1 @@
+<?php getFileTheme('ajaxNotice/ajaxNotice.php'); ?>
