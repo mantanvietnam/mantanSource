@@ -14,7 +14,7 @@
 		if($idAppFacebook!=''){
 	?>
 		<div id="fb-root"></div>
-		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=<?php echo $idAppFacebook;?>&autoLogAppEvents=1"></script>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=<?php echo $idAppFacebook;?>&autoLogAppEvents=1"></script>
 
 		<div class="fb-comments" data-href="<?php echo $urlComment;?>" data-width="100%" data-numposts="<?php echo $numberComment;?>"></div>
 	<?php }
@@ -51,7 +51,7 @@
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
 		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=221118834887809";
+		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=<?php echo $idAppFacebook;?>";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 
@@ -87,7 +87,7 @@
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
 		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=<?php echo $idAppFacebook;?>&version=v2.0";
+		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=<?php echo $idAppFacebook;?>&version=v9.0";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 
@@ -141,6 +141,7 @@
 					<meta property="og:image:height" content="603" />
     			';
 
+    		/*
     		echo "
 					<script>
 					  window.fbAsyncInit = function() {
@@ -148,7 +149,7 @@
 					      appId      : '".$idAppFacebook."',
 					      cookie     : true,
 					      xfbml      : true,
-					      version    : 'v6.0'
+					      version    : 'v9.0'
 					    });
 					      
 					    FB.AppEvents.logPageView();   
@@ -163,6 +164,7 @@
 					     fjs.parentNode.insertBefore(js, fjs);
 					   }(document, 'script', 'facebook-jssdk'));
 					</script>";
+			*/
         }
 	}
 	
@@ -190,7 +192,7 @@
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
 		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=<?php echo $idAppFacebook;?>&version=v2.0";
+		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=<?php echo $idAppFacebook;?>&version=v9.0";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		
