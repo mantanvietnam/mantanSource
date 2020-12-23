@@ -26,12 +26,13 @@
 							$listData['Option']['value']['tData']= 0;
 						}
 						$listData['Option']['value']['tData'] += 1;
-						$listData['Option']['value']['allData'][ $listData['Option']['value']['tData'] ]= array( 'id'=> $listData['Option']['value']['tData'], 'name'=>$name );
+						$listData['Option']['value']['allData'][ $listData['Option']['value']['tData'] ]= array( 'id'=> $listData['Option']['value']['tData'], 'name'=>$name, 'description'=>$dataSend['description'] );
 					}
 					else
 					{
 						$idClassEdit= (int) $dataSend['id'];
 						$listData['Option']['value']['allData'][$idClassEdit]['name']= $name;
+						$listData['Option']['value']['allData'][$idClassEdit]['description']= $dataSend['description'];
 					}
 					
 					$modelOption->saveOption('linkWebCategory',$listData['Option']['value']);

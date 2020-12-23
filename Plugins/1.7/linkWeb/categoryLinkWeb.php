@@ -42,6 +42,7 @@
 	                <tr>
 	                  <td align="center" width="30">ID</td>
 	                  <td align="center" width="150">Nhóm liên kết</td>
+	                  <td align="center" width="150">Mô tả</td>
 	                  <td align="center" width="30">Chọn</td>
 	                </tr>
 	                <?php
@@ -52,8 +53,9 @@
 	                        <tr id="trList<?php echo $components['id'];?>">
 	                          <td align="center" ><?php echo $components['id'];?></td>
 	                          <td height="40" id="name<?php echo $components['id'];?>"><?php echo $components['name'];?></td>
+	                          <td height="40" id="description<?php echo $components['id'];?>"><?php echo $components['description'];?></td>
 	                          <td align="center" width="165" >
-	                            <input class="input" type="button" value="Sửa" onclick="changeName(<?php echo $components['id'];?>,'<?php echo $components['name'];?>');">
+	                            <input class="input" type="button" value="Sửa" onclick="changeName(<?php echo $components['id'];?>,'<?php echo $components['name'];?>','<?php echo $components['description'];?>');">
 								&nbsp;
 								<input class="input" type="button" value="Xóa" onclick="deleteData('<?php echo $components['id'];?>');">
 	                          </td>
@@ -71,17 +73,20 @@
 	      	<input type="hidden" value="" name="id" id="idData" />
 	      	<input type="hidden" value="save" name="type" />
 	      	<input type="hidden" value="1" name="redirect" />
-		  	Nhóm liên kết<br /><br /><input type='text' required id='nameData' name="name" value='' />&nbsp;&nbsp;<input type='submit' value='Lưu' class='input' />
+		  	Nhóm liên kết*<br /><input type='text' required id='nameData' name="name" value='' /><br /><br />
+		  	Mô tả<br /><input type='text' id='descriptionData' name="description" value='' /><br /><br />
+			<input type='submit' value='Lưu' class='input' />
 	      </form>
 	  </div>
 	
 <script type="text/javascript">
 	var urlNow="<?php echo $urlNow;?>";
 	
-	function changeName(id,name)
+	function changeName(id,name,description)
 	{
 		document.getElementById("idData").value= id;
 		document.getElementById("nameData").value= name;
+		document.getElementById("descriptionData").value= description;
 		
 		$('#themData').lightbox_me({
 	    centered: true, 
@@ -95,6 +100,7 @@
 	{
 		document.getElementById("idData").value= '';
 		document.getElementById("nameData").value= '';
+		document.getElementById("descriptionData").value= '';
 		
 	    $('#themData').lightbox_me({
 	    centered: true, 
