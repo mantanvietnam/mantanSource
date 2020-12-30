@@ -55,7 +55,7 @@
 	                          <td height="40" id="name<?php echo $components['id'];?>"><?php echo $components['name'];?></td>
 	                          <td height="40" id="description<?php echo $components['id'];?>"><?php echo $components['description'];?></td>
 	                          <td align="center" width="165" >
-	                            <input class="input" type="button" value="Sửa" onclick="changeName(<?php echo $components['id'];?>,'<?php echo $components['name'];?>','<?php echo $components['description'];?>');">
+	                            <input class="input" type="button" value="Sửa" onclick="changeName(<?php echo $components['id'];?>,'<?php echo $components['name'];?>','<?php echo @htmlspecialchars_decode($components['description']);?>');">
 								&nbsp;
 								<input class="input" type="button" value="Xóa" onclick="deleteData('<?php echo $components['id'];?>');">
 	                          </td>

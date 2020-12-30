@@ -11,7 +11,7 @@
 		global $urlHomes;
 		
 		$data= $modelOption->getOption('popupHome');
-		if($data['Option']['value']['status']==1)
+		if($data['Option']['value']['status']==1 && empty($_SESSION['showPopup']))
 		{ 
 		?>
 			<div class="modal" tabindex="-1" role="dialog" id="myModal">
@@ -36,6 +36,6 @@
 			<script type="text/javascript">
 				$('#myModal').modal('show')
 			</script>
-		<?php }
+		<?php $_SESSION['showPopup']= true; }
 	}
 ?>
