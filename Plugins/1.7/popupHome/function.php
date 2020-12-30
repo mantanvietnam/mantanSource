@@ -14,7 +14,7 @@
 		if($data['Option']['value']['status']==1 && empty($_SESSION['showPopup']))
 		{ 
 		?>
-			<div class="modal" tabindex="-1" role="dialog" id="myModal">
+			<div class="modal" tabindex="-1" role="dialog" id="myModalPopUP1">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -34,7 +34,7 @@
 			</div>
 			
 			<script type="text/javascript">
-				$('#myModal').modal('show')
+				$('#myModalPopUP1').modal('show')
 			</script>
 		<?php $_SESSION['showPopup']= true; }
 	}
