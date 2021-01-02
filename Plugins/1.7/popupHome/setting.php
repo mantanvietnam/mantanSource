@@ -42,10 +42,10 @@
 	
 	  <div class="taovien">
 	    <form action="<?php echo $urlPlugins.'admin/popupHome-saveSetting.php';?>" method="post" name="listForm">
-	    	Status 
+	    	TRẠNG THÁI :
 	    	<select name="status">
-		    	<option value="1" <?php if(isset($data['Option']['value']['status']) && $data['Option']['value']['status']==1) echo 'selected=""';?>>Active</option>
-		    	<option value="0" <?php if(isset($data['Option']['value']['status']) && $data['Option']['value']['status']==0) echo 'selected=""';?>>Disable</option>
+		    	<option value="1" <?php if(isset($data['Option']['value']['status']) && $data['Option']['value']['status']==1) echo 'selected=""';?>>Bật</option>
+		    	<option value="0" <?php if(isset($data['Option']['value']['status']) && $data['Option']['value']['status']==0) echo 'selected=""';?>>Tắt</option>
 	    	</select>
 	    	<br/><br/>
 	    	<?php
