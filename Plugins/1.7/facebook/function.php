@@ -1,8 +1,8 @@
 <?php
 	$menus= array();
 	$menus[0]['title']= 'Facebook';
-    $menus[0]['sub'][0]= array('name'=>'Facebook Setting','classIcon'=>'fa-facebook-square','url'=>$urlPlugins.'admin/facebook-setting.php','permission'=>'facebookSetting',
-	'permission'=>'facebookSetting');
+    $menus[0]['sub'][0]= array('name'=>'Facebook Setting','classIcon'=>'fa-facebook-square','url'=>$urlPlugins.'admin/facebook-setting.php','permission'=>'facebookSetting');
+	$menus[0]['sub'][1]= array('name'=>'Bài đăng Facebook','classIcon'=>'fa-facebook-square','url'=>$urlPlugins.'admin/facebook-listPostFacebook.php','permission'=>'listPostFacebook');
     addMenuAdminMantan($menus);
     
 	function showCommentFacebook($urlComment,$numberComment)
@@ -20,6 +20,28 @@
 	<?php }
 	}
 	
+	function getPostFacebook($limit=3)
+	{
+		global $modelOption;
+		$listData= $modelOption->getOption('listPostFacebook');
+		$newData= array();
+
+		if(!empty($listData['Option']['value']['allData'])){
+			$allData= array_reverse($listData['Option']['value']['allData'], true);
+			$dem= 0;
+			foreach($allData as $item){
+				$dem++;
+				if($dem<=$limit){
+					$newData[]= $item;
+				}else{
+					break;
+				}
+			}
+		}
+
+		return $newData;
+	}
+
 	function showLikeFanpage()
 	{ 
 		global $modelOption;
