@@ -126,7 +126,7 @@
            }
 	   }
 	   
-	   function saveCategoryNotice($slug,$idCatEdit,$name,$parent,$key,$description,$image)
+	   function saveCategoryNotice($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content)
 	   {
 	   		$dk = array ('key' => 'categoryNotice');
 	   		$modelSlug= ClassRegistry::init('Slug');
@@ -148,7 +148,8 @@
 								'idSlug'=>$infoSlug['idSlug'],
 								'key'=>$key,
 								'description'=>$description,
-                                'image' => $image						
+                                'image' => $image,						
+                                'content' => $content					
 							); 	 
 				if($parent==0)
 				{
@@ -175,6 +176,7 @@
 					$cats['key']= $key;
 					$cats['description']= $description;
 					$cats['image']= $image;
+					$cats['content']= $content;
 					
 					$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCatEdit,$parent,0);
 					//debug($groups['Manager']['category']);

@@ -57,11 +57,12 @@
 				$key= $_POST['key'];
                 $image= $_POST['image'];
 				$description= $_POST['description'];
+				$content= $_POST['content'];
 				
 				$return= -1;
 				if($name != '')
 				{
-					$return= $this->Option->saveCategoryNotice($slug,$idCatEdit,$name,$parent,$key,$description,$image);
+					$return= $this->Option->saveCategoryNotice($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content);
 				}
 				$this->redirect($urlLocal['urlOptions']."categoryNotice");
 	

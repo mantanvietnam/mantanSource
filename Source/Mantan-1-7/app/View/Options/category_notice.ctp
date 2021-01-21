@@ -36,7 +36,7 @@
 				echo '&nbsp&nbsp&nbsp&nbsp';
 			}
 			?>
-			<img src="<?php echo $webRoot;?>images/bg-list-item.png" />&nbsp&nbsp<a target="_blank" href="<?php echo getUrlNoticeCategory($cat['id'],$cat['slug']);?>"><span id="content<?php echo $cat['id'];?>"><?php echo $cat['name'];?></span></a>
+			<img src="<?php echo $webRoot;?>images/bg-list-item.png" />&nbsp&nbsp<a target="_blank" href="<?php echo getUrlNoticeCategory($cat['id'],$cat['slug']);?>"><span id="name<?php echo $cat['id'];?>"><?php echo $cat['name'];?></span></a>
 			
 			</p>
 			</td>
@@ -61,6 +61,7 @@
 	          </a>
             </td>
 			<td align="center">
+				<input type="hidden" id="content<?php echo $cat['id'];?>" value="<?php echo @htmlspecialchars_decode($cat['content']);?>">
 				<input class="input" type="button" value="<?php echo $languageMantan['edit'];?>" onclick="suaData('<?php echo @$cat['id'];?>','<?php echo @$cat['image'];?>');">
 				&nbsp;&nbsp;
 				<input class="input" type="button" value="<?php echo $languageMantan['delete'];?>" onclick="deleteData('<?php echo $cat['id'];?>','<?php echo $cat['slug'];?>');">
@@ -116,7 +117,14 @@
                                 <?php showUploadFile('image','image');?>
 							</td>
 						</tr>
-	                    
+	                    <tr>
+	                    	<td><?php echo $languageMantan['content'];?></td>
+	                        <td colspan="3">
+	                            <?php
+	                            	showEditorInput('content','content','');
+	                            ?>                                       
+	                        </td>
+	                    </tr>
 	                   <tr>
 	                        <td colspan="4">
 	                            <input type="submit" value="<?php echo $languageMantan['saveCategories'];?>" class="btn btn-default"  />                                          
@@ -168,12 +176,15 @@ function setCheckedValue(radioObj) {
 
 function suaData(idCat,image)
 {
-    var nameCat= document.getElementById("content"+idCat).innerHTML;
+    var nameCat= document.getElementById("name"+idCat).innerHTML;
+    var contentCat= document.getElementById("content"+idCat).value;
     document.getElementById("name").value= nameCat;
 	document.getElementById("idCatEdit").value= idCat;
 	document.getElementById("image").value= image;
 	document.getElementById("key").value= document.getElementById("key"+idCat).innerHTML;
 	document.getElementById("description").value= document.getElementById("description"+idCat).innerHTML;
+
+	CKEDITOR.instances['content'].setData(contentCat);
 	
 	var x=document.getElementById("parent");
 	var i,j,idParent,truoc= 0;
