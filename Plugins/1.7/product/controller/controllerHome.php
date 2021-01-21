@@ -1139,7 +1139,9 @@
 					$product['Product']['codeDiscountInput']= $_SESSION['codeDiscountInput'];
 				}
 
-				$product['Product']['numberOrder']= 1;
+				if(empty($_POST['numberOrder'])) $_POST['numberOrder']=1;
+
+				$product['Product']['numberOrder']= (int) $_POST['numberOrder'];
 				$product['Product']['dataSend']= $dataSend;
 				$listOrderProduct[]= $product;
 				$_SESSION['orderProducts']= $listOrderProduct;
