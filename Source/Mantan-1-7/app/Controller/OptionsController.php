@@ -599,10 +599,20 @@
 	        {
 	            $urlLocalRoot= '';
 	        }
+
+	        $urlLocalRoot= __DIR__.'/../../';
         	
         	Controller::loadModel('Option');
         	Controller::loadModel('Notice');
         	
+        	if (!file_exists(__DIR__.'/../../sitemap')) {
+                mkdir(__DIR__.'/../../sitemap', 0755, true);
+            }
+
+            if (!file_exists(__DIR__.'/../../sitemap/category.xml')) {
+            	fopen(__DIR__.'/../../sitemap/category.xml', "w");
+            }
+
         	$sitemap= array($urlHomes,$urlHomes.'sitemap/category.xml');
 			
 			// Save setting
@@ -761,7 +771,11 @@
 					  
 					  $r->appendChild( $b );
 				}
-			  
+			  	
+			  	if (!file_exists(__DIR__.'/../../sitemap/'.$key.'.xml')) {
+	            	fopen(__DIR__.'/../../sitemap/'.$key.'.xml', "w");
+	            }
+
 				$doc->save($urlLocalRoot.'sitemap/'.$key.'.xml');
 				
 				array_push($sitemap, $urlHomes.'sitemap/'.$key.'.xml');
