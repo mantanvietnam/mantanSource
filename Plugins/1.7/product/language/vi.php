@@ -94,6 +94,7 @@
 	// List Product
 	$languageProduct['Add']= 'Thêm';
 	$languageProduct['Edit']= 'Sửa';
+	$languageProduct['Copy']= 'Sao chép';
 	$languageProduct['Search']= 'Tìm kiếm';
 	$languageProduct['View']= 'Xem';
 	$languageProduct['ImportPrices']= 'Giá vốn';

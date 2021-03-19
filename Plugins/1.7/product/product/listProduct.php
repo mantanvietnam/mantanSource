@@ -54,6 +54,24 @@
         </a>
 
     </div>
+
+    <div class="congcu">
+
+        <a href="<?php echo $urlPlugins;?>admin/product-product-addProductExcel.php">
+
+          <span>
+
+            <img src="<?php echo $webRoot;?>images/add.png">
+
+          </span>
+
+            <br>
+
+            <?php echo $languageProduct['Add'].' Excel';?>
+
+        </a>
+
+    </div>
 </div>
 <br/>
 <div id="content" class="clear">
@@ -143,7 +161,7 @@
             <th align="center"><?php echo $languageProduct['View'];?></th>
             <th align="center"><?php echo $languageProduct['Status'];?></th>
             <th align="center" width="50"><?php echo $languageProduct['Priority'];?></th>
-            <th align="center" width="160"><?php echo $languageProduct['Choose'];?></th>
+            <th align="center" width="160" colspan="3"><?php echo $languageProduct['Choose'];?></th>
         </tr>
 
         <?php
@@ -182,24 +200,29 @@
 	            }else{
 	            	$selected1= "selected";
 	            }
-                echo '<tr>
-                		  <td><img src="'.$imgThumb.'" width="50" /></td>
-                          <td><a target="_blank" href="'.getLinkProduct().$tin['Product']['slug'].'.html">'.$tin['Product']['title'].'</a></td>
+                echo '	<tr>
+                		  	<td><img src="'.$imgThumb.'" width="50" /></td>
+                          	<td><a target="_blank" href="'.getLinkProduct().$tin['Product']['slug'].'.html">'.$tin['Product']['title'].'</a></td>
                     
                          	<td><input name="price_'.$tin['Product']['id'].'" value="'.@$tin['Product']['price'].'" style="width:80px" /></td>
-                          <td>'.implode(", ", $listCatNoti).'</td>
-                         <td>'.$view.'</td>
-                           <td>
-	                          <select name="lock_'.$tin['Product']['id'].'">
+                          	<td>'.implode(", ", $listCatNoti).'</td>
+                         	<td>'.$view.'</td>
+                           	<td>
+	                          	<select name="lock_'.$tin['Product']['id'].'">
 	                          		<option '.$selected0.' value="0">Kích hoạt</option>
 	                          		<option '.$selected1.' value="1">Khóa</option>
-	                          </select>
-                          </td>
-                          <td><input name="priority_'.$tin['Product']['id'].'" value="'.@$tin['Product']['priority'].'" style="width:50px" /></td>
-                          <td align="center">
-								<a style="padding: 4px 8px;" href="'.$urlPlugins.'admin/product-product-addProduct.php/'.$tin['Product']['id'].'" class="input"  >'.$languageProduct['Edit'].'</a>  
-								<a style="padding: 4px 8px;" href="'.$urlPlugins.'admin/product-deleteProduct.php/'.$tin['Product']['id'].'" class="input" onclick="return confirm('."'".$confirm."'".');"  >'.$languageProduct['Delete'].'</a>
-						  </td>
+	                          	</select>
+                          	</td>
+                          	<td><input name="priority_'.$tin['Product']['id'].'" value="'.@$tin['Product']['priority'].'" style="width:50px" /></td>
+                          	<td align="center">
+								<a href="'.$urlPlugins.'admin/product-product-addProduct.php/'.$tin['Product']['id'].'" class="input"  >'.$languageProduct['Edit'].'</a>  
+							</td>
+							<td align="center">
+								<a href="'.$urlPlugins.'admin/product-deleteProduct.php/'.$tin['Product']['id'].'" class="input" onclick="return confirm('."'".$confirm."'".');"  >'.$languageProduct['Delete'].'</a>
+						  	</td>
+						  	<td align="center">
+								<a href="'.$urlPlugins.'admin/product-copyProduct.php/?id='.$tin['Product']['id'].'" class="input"  >'.$languageProduct['Copy'].'</a>
+						  	</td>
 
                         </tr>';
             }

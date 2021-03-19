@@ -92,6 +92,7 @@
 	// List Product
 	$languageProduct['Add']= 'Add';
 	$languageProduct['Edit']= 'Edit';
+	$languageProduct['Copy']= 'Copy';
 	$languageProduct['Search']= 'Search';
 	$languageProduct['View']= 'View';
 	$languageProduct['ImportPrices']= 'Import Prices';

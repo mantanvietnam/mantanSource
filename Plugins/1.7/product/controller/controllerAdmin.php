@@ -364,6 +364,122 @@
 
 	}
 
+	function addProductExcel($input)
+	{
+		$dataSend= $input['request']->data;
+		global $modelOption;
+		global $urlPlugins;
+		global $isRequestPost;
+		global $urlHomes;
+	
+		$modelProduct= new Product();
+
+		if(checkAdminLogin()){
+			if($isRequestPost && !empty($dataSend['dataExcel']))
+			{
+				$dataSend['dataExcel']= nl2br($dataSend['dataExcel']);
+                $dataSend['dataExcel']= explode('<br />', $dataSend['dataExcel']);
+                if(!empty($dataSend['dataExcel'])){
+                    foreach($dataSend['dataExcel'] as $listData){
+                        //$data= explode('\t', $listData);
+                        $data= preg_split('/[\t]/', trim($listData));
+                        if(!empty($data[0])){
+                        	$listSlug= array();
+					        $number= 0;
+					        $slug= createSlugMantan($data[0]);
+					        $slugStart= $slug;
+					        do
+					        {
+					       	 	 $number++;
+						       	 $listSlug= $modelProduct->find('all', array('conditions' => array('slug'=>$slug) ));
+								 if(count($listSlug)>0)
+								 {
+								 	$slug= $slugStart.'-'.$number;
+						       	 }
+					        } while (count($listSlug)>0);
+
+					        $images= array();
+					        if(!empty($data[9])) $images[]= $data[9];
+					        if(!empty($data[10])) $images[]= $data[10];
+					        if(!empty($data[11])) $images[]= $data[11];
+					        if(!empty($data[12])) $images[]= $data[12];
+
+                            $modelProduct->create();
+                            $save= array();
+                            $save['Product']= array( 'title'=>$data[0],
+												'description'=>$data[2],
+												'key'=> '',
+												'slug'=> $slug,
+												'info'=>'',
+												'code'=>$data[1],
+												'manufacturerId'=>'',
+												'price'=> (int) $data[4],
+												'priceOther'=>(int) $data[5],
+												'typeMoneyId'=>'',
+												'quantity'=>(int) $data[6],
+												'warranty'=>$data[7],
+												'lock'=>0,
+												'category'=> array((int) $data[3]),
+												'images'=> $images,
+												'hot'=>0,
+												'dateDiscountStart'=>'',
+												'dateDiscountEnd'=>'',
+												'priceDiscount'=>'',
+												'codeDiscount'=> array(),
+												'alias'=>'',
+												'nameSeo'=>'',
+												'slugKeys'=>'',
+												'properties'=> array(),
+												'otherProductTitle'=>'',
+												'otherProductID'=>'',
+												'timeUp'=> time(),
+												'mass'=>$data[8],
+												'numberDiscount'=>0,
+												'numberDiscountActive'=> 0,
+											);
+
+                            $modelProduct->save($save);
+                        }
+                    }
+                }
+
+                $modelProduct->redirect($urlPlugins.'admin/product-product-listProduct.php');
+			}
+		}else{
+			$modelProduct->redirect($urlHomes);
+		}
+
+	}
+
+	function copyProduct($input)
+	{
+		$dataSend= $input['request']->data;
+		global $modelOption;
+		global $urlPlugins;
+		global $isRequestPost;
+		global $urlHomes;
+	
+		$modelProduct= new Product();
+
+		if(checkAdminLogin()){
+			if(!empty($_GET['id'])){
+				$product= $modelProduct->getProduct($_GET['id']);
+
+				if($product){
+					unset($product['Product']['id']);
+					$product['Product']['title']= 'copy - '.$product['Product']['title'];
+					$product['Product']['slug']= $product['Product']['slug'].rand(1,1000);
+					$modelProduct->save($product);
+				}
+			}
+
+			$modelProduct->redirect($urlPlugins.'admin/product-product-listProduct.php');
+		}else{
+			$modelProduct->redirect($urlHomes);
+		}
+
+	}
+
 	function listCategory($input)
 	{
 		global $modelOption;

@@ -488,8 +488,16 @@ function showUploadFile($idInput='',$nameInput='',$value='',$number='')
 			document.getElementById( '<?php echo $idInput;?>' ).value = fileUrl;
 		}
 	</script>
-	<input style="float: left;" type="text" name="<?php echo $nameInput;?>" id='<?php echo $idInput;?>' value="<?php echo $value;?>" />
-	<input type="button" value="<?php echo $languageMantan['choose'];?>" onclick="BrowseServerImage<?php echo $number;?>();" />
+	<div class="row">
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name="<?php echo $nameInput;?>" id='<?php echo $idInput;?>' value="<?php echo $value;?>" />
+		</div>
+		<div class="col-sm-2">
+			<input type="button" class="btn btn-default" value="Upload" onclick="BrowseServerImage<?php echo $number;?>();" />
+		</div>
+	</div>
+	
+	
 <?php 
 	}
 }
