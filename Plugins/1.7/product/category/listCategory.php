@@ -24,6 +24,9 @@
 	{
 		global $urlHomes;
 		echo '<tr>
+				<td align="center">
+					'.$cat['id'].'
+				</td>
 				<td>
 					<p style="padding-left: 10px;"  >';
 						for($i=1;$i<=$sau;$i++)
@@ -112,6 +115,7 @@
 	
 	<table cellspacing="0" class="tableList">
 		<tr>
+			<td align="center">ID</td>
 			<td align="center"><?php echo $languageProduct['NameCategory'];?></td>
 			<td align="center"><?php echo $languageProduct['Show'];?></td>
 			<td align="center"><?php echo $languageProduct['Permalinks'];?></td>

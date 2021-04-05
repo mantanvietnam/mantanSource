@@ -404,6 +404,16 @@
 					        if(!empty($data[11])) $images[]= $data[11];
 					        if(!empty($data[12])) $images[]= $data[12];
 
+					        $category= array();
+							if(isset($data[3])){
+								$data[3]= explode(',', $data[3]);
+								if(count($data[3])>0){
+									foreach ($data[3] as $key => $value) {
+										$category[]= (int) $value;
+									}
+								}
+							}
+
                             $modelProduct->create();
                             $save= array();
                             $save['Product']= array( 'title'=>$data[0],
@@ -419,7 +429,7 @@
 												'quantity'=>(int) $data[6],
 												'warranty'=>$data[7],
 												'lock'=>0,
-												'category'=> array((int) $data[3]),
+												'category'=> $category,
 												'images'=> $images,
 												'hot'=>0,
 												'dateDiscountStart'=>'',
@@ -1821,5 +1831,25 @@
 		}
 	
 		setVariable('listData',$listDataShow);
+	}
+
+	function checkCodeProductAPI($input)
+	{
+		$modelProduct= new Product();
+		//echo $_GET['code'].' ';
+		if(isset($_GET['code'])){
+			$conditions= array('code'=>$_GET['code']);
+
+			$data= $modelProduct->find('first', array('conditions'=>$conditions));
+
+			if($data){
+				echo 1;
+			}else{
+				echo 0;
+			}
+		}else{
+			echo 2;
+		}
+		die;
 	}
 ?>

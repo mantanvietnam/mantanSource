@@ -45,5 +45,6 @@
 
 	$routesPlugin['searchAjax']= 'product/view/searchAjax.php';
 	$routesPlugin['searchAjaxProductOther']= 'product/product/searchAjaxProductOther.php';
+	$routesPlugin['checkCodeProductAPI']= 'product/product/checkCodeProductAPI.php';
 	
 ?>

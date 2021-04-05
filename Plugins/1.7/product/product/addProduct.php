@@ -601,7 +601,8 @@
 					<tr>
 						<td valign="top">
 							<p><?php echo $languageProduct['CodeProduct'];?></p>
-							<input type="text" class="form-control" name="code" id='code' value="<?php echo (isset($news['Product']['code']))?$news['Product']['code']:'';?>"  />
+							<input type="text" class="form-control" onkeyup="checkCodeProduct();" name="code" id='code' value="<?php echo (isset($news['Product']['code']))?$news['Product']['code']:'';?>"  />
+							<p id="messCodeProduct" style="color: red;"></p>
 						</td>
 						<td valign="top">
 							<p><?php echo $languageProduct['Mass'];?> (kg)</p>
@@ -749,3 +750,24 @@
 		</div>
 	</form>
 </div>
+
+<script type="text/javascript">
+	function checkCodeProduct()
+	{
+		var code= $('#code').val();
+
+		$.ajax({
+		  method: "GET",
+		  url: "/checkCodeProductAPI",
+		  data: { code: code }
+		})
+		  .done(function( msg ) {
+		  	console.log(msg);
+		  	if(msg=='1'){
+		  		$('#messCodeProduct').html('Mã code này đã tồn tại');
+		  	}else{
+		  		$('#messCodeProduct').html('&nbsp;');
+		  	}
+		  });
+	}
+</script>
