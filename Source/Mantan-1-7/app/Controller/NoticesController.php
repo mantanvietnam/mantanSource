@@ -146,7 +146,7 @@
        function deleteNotice()
        {
          //Configure::write('debug', 2);
-
+       		global $urlHomes;
          $users= $this->Session->read('infoAdminLogin');
          if($users)
          {
@@ -162,6 +162,10 @@
               if($data){
                 $this->Slug->deleteSlug($data['Notice']['slug']);
                 $this->Notice->delete($id);
+
+                $url= 'https://'.$_SERVER['SERVER_NAME'].'/'.$data['Notice']['slug'].'.html';
+         		sendDataConnectMantan('https://index.manmo.vn/?url='.urlencode($url).'&type=URL_DELETED');
+
               }
               
              

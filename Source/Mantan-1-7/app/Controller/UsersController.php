@@ -248,6 +248,10 @@ class UsersController extends AppController {
     function register() {
         $this->setup();
         $this->layout = 'default';
+        
+        $cap_code= rand(100000, 999999);
+        $_SESSION['capchaCodeRegister'] = $cap_code;
+        $this->set('capchaCode', $cap_code);
     }
 
     function infoUser() {

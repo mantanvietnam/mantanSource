@@ -1,0 +1,13 @@
+<?php
+include("controller/adminController.php");
+include("controller/staffController.php");
+include("controller/productController.php");
+include("controller/warehouseController.php");
+include("controller/agencyController.php");
+include("controller/payController.php");
+include("controller/orderController.php");
+include("controller/shipController.php");
+include("controller/qrcodeController.php");
+include("controller/emailController.php");
+include("controller/historyAgencyController.php");
+?>

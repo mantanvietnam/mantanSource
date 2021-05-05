@@ -489,7 +489,7 @@ function showUploadFile($idInput='',$nameInput='',$value='',$number='')
 		}
 	</script>
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 			<input class="form-control" type="text" name="<?php echo $nameInput;?>" id='<?php echo $idInput;?>' value="<?php echo $value;?>" />
 		</div>
 		<div class="col-sm-2">

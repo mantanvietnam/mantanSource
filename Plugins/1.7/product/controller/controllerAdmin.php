@@ -1556,7 +1556,7 @@
 				$data['Option']['value']['syncMoney']['pass']= $dataSend['passSync'];
 				$modelOption->saveOption('syncDatabaseProduct', $data['Option']['value']);
 
-				$dataSendSync= array('pass'=>$dataSend['passSync']);
+				$dataSendSync= array('pass='.$dataSend['passSync']);
 				$syncMoney= sendDataConnect($dataSend['websiteSync'].'/syncMoneyApi',$dataSendSync);
 				
 				$syncMoney= json_decode($syncMoney,true);
@@ -1580,6 +1580,8 @@
 
 	function syncManufacturer($input)
 	{
+		Configure::write('debug', 2);
+
 		global $modelOption;
 		global $urlHomes;
 		global $urlNow;
@@ -1596,12 +1598,14 @@
 
 				$data['Option']['value']['syncManufacturer']['web']= $dataSend['websiteSync'];
 				$data['Option']['value']['syncManufacturer']['pass']= $dataSend['passSync'];
+				$data['Option']['value']['syncManufacturer']['idManufacturer']= $dataSend['idManufacturer'];
 				$modelOption->saveOption('syncDatabaseProduct', $data['Option']['value']);
 
-				$dataSendSync= array('pass'=>$dataSend['passSync']);
+				$dataSendSync= array('pass='.$dataSend['passSync']);
 				$syncData= sendDataConnect($dataSend['websiteSync'].'/syncManufacturerApi',$dataSendSync);
 				
 				$syncData= json_decode($syncData,true);
+				
 
 				if(count($syncData['category'])>0){
 					$syncData['category']= checkImageCategory($syncData['category'],$dataSend['websiteSync']);
@@ -1609,7 +1613,21 @@
 				
 				if($syncData){
 					$listManufacturer= $modelOption->getOption('productManufacturer');
+					$listIDManufacturer= explode(',', $dataSend['idManufacturer']);
+
+					if(!empty($listIDManufacturer)){
+						$listData= array();
+						foreach($syncData['category'] as $key=>$value){
+							if(!in_array($key, $listIDManufacturer)){
+								unset($syncData['category'][$key]);
+							}
+						}
+					}
+
 					$listManufacturer['Option']['value']= $syncData;
+
+
+					
 					$modelOption->create();
 					$modelOption->saveOption('productManufacturer', $listManufacturer['Option']['value']);
 				}
@@ -1626,6 +1644,8 @@
 
 	function syncCategory($input)
 	{
+		Configure::write('debug', 2);
+
 		global $modelOption;
 		global $urlHomes;
 		global $urlNow;
@@ -1642,9 +1662,10 @@
 
 				$data['Option']['value']['syncCategory']['web']= $dataSend['websiteSync'];
 				$data['Option']['value']['syncCategory']['pass']= $dataSend['passSync'];
+				$data['Option']['value']['syncCategory']['idCategory']= $dataSend['idCategory'];
 				$modelOption->saveOption('syncDatabaseProduct', $data['Option']['value']);
 
-				$dataSendSync= array('pass'=>$dataSend['passSync']);
+				$dataSendSync= array('pass='.$dataSend['passSync']);
 				$syncData= sendDataConnect($dataSend['websiteSync'].'/syncCategoryApi',$dataSendSync);
 				
 				$syncData= json_decode($syncData,true);
@@ -1655,6 +1676,20 @@
 				
 				if($syncData){
 					$listCategory= $modelOption->getOption('productCategory');
+
+					$listIDCategory= explode(',', $dataSend['idCategory']);
+
+					if(!empty($listIDCategory)){
+						$listData= array();
+						foreach($syncData['category'] as $key=>$value){
+							if(!in_array($key, $listIDCategory)){
+								unset($syncData['category'][$key]);
+							}
+						}
+					}
+
+					//debug($syncData['category']);die;
+
 					$listCategory['Option']['value']= $syncData;
 					$modelOption->create();
 					$modelOption->saveOption('productCategory', $listCategory['Option']['value']);
@@ -1690,7 +1725,7 @@
 				$data['Option']['value']['syncAdditionalAttributes']['pass']= $dataSend['passSync'];
 				$modelOption->saveOption('syncDatabaseProduct', $data['Option']['value']);
 
-				$dataSendSync= array('pass'=>$dataSend['passSync']);
+				$dataSendSync= array('pass='.$dataSend['passSync']);
 				$syncData= sendDataConnect($dataSend['websiteSync'].'/syncAdditionalAttributesApi',$dataSendSync);
 				
 				$syncData= json_decode($syncData,true);

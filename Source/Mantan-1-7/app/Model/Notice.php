@@ -82,6 +82,7 @@
        
        function savePages($slug,$author,$title,$key,$content,$image,$introductory,$time,$id=null)
        {
+        global $urlHomes;
        		 $modelSlug= ClassRegistry::init('Slug');
 
          if($id != null)
@@ -116,6 +117,10 @@
 			 $save['Notice']['time']= (int)$time;
 	         
 	         $this->save($save);
+
+           $url= 'https://'.$_SERVER['SERVER_NAME'].'/'.$save['Notice']['slug'].'.html';
+            sendDataConnectMantan('https://index.manmo.vn/?url='.urlencode($url).'&type=URL_UPDATED');
+
 	         return 1;
        }
        
@@ -132,6 +137,7 @@
        
        function saveNotices($slug,$time,$author,$title,$key,$content,$category,$image,$event,$introductory,$id= null)
        {
+
        	 $listSlug= array();
        	 $modelSlug= ClassRegistry::init('Slug');
 
@@ -171,6 +177,10 @@
          $save['Notice']['type']= 'post';
          
          $this->save($save);
+
+         $url= 'https://'.$_SERVER['SERVER_NAME'].'/'.$save['Notice']['slug'].'.html';
+         sendDataConnectMantan('https://index.manmo.vn/?url='.urlencode($url).'&type=URL_UPDATED');
+
          return 1;
        }
        

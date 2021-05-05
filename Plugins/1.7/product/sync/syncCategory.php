@@ -19,6 +19,10 @@
             	<td align="left"><input style="width: 300px;" placeholder="http://mantanshop.com/" type="text" value="<?php echo @$data['Option']['value']['syncCategory']['web'];?>" name="websiteSync" id="websiteSync" /></td>
           	</tr>
             <tr>
+              <td align="right" width="200" >ID Category</td>
+              <td align="left"><input style="width: 300px;" placeholder="" type="text" value="<?php echo @$data['Option']['value']['syncCategory']['idCategory'];?>" name="idCategory" id="idCategory" /></td>
+            </tr>
+            <tr>
               <td align="right" width="200" ><?php echo $languageProduct['PasswordForDataSynchronization'];?></td>
               <td align="left"><input style="width: 300px;" placeholder="" type="password" value="<?php echo @$data['Option']['value']['syncCategory']['pass'];?>" name="passSync" id="passSync" /></td>
             </tr>
