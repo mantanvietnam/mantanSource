@@ -1684,6 +1684,14 @@
 						foreach($syncData['category'] as $key=>$value){
 							if(!in_array($key, $listIDCategory)){
 								unset($syncData['category'][$key]);
+							}else{
+								if(!empty($value['sub'])){
+									foreach ($value['sub'] as $keySub => $valueSub) {
+										if(!in_array($keySub, $listIDCategory)){
+											unset($syncData['category'][$key]['sub'][$keySub]);
+										}
+									}
+								}
 							}
 						}
 					}

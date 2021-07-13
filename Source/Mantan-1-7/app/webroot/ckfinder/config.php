@@ -86,7 +86,7 @@ if ($_SERVER["SERVER_PORT"] != "80" && $_SERVER["SERVER_PORT"] != "443")
 
 }
 
-$baseUrl= $pageURL.$baseUrl;
+//$baseUrl= $pageURL.$baseUrl;
 //$baseUrl= '/vi/app/webroot/upload/';
 
 //echo '<script type="text/javascript">window.location= "'.$baseUrl.'";</script>';
@@ -126,14 +126,14 @@ $config['Thumbnails'] = Array(
 		'maxWidth' => 100,
 		'maxHeight' => 100,
 		'bmpSupported' => false,
-		'quality' => 80);
+		'quality' => 100);
 
 /*
 Set the maximum size of uploaded images. If an uploaded image is larger, it
 gets scaled down proportionally. Set to 0 to disable this feature.
 */
 $config['Images'] = Array(
-		'maxWidth' => 2000,
+		'maxWidth' => 1200,
 		'maxHeight' => 0,
 		'quality' => 100);
 

@@ -2,9 +2,7 @@
 
 $menus = array();
 $menus[0]['title'] = 'Project Management';
-$menus[0]['sub'][0] = array('name' => 'Project List',
-    'classIcon' => 'fa-list',
-    'url' => $urlPlugins . 'admin/project-listProject.php');
+$menus[0]['sub'][0] = array('name' => 'Project List','classIcon' => 'fa-list','url' => $urlPlugins . 'admin/project-listProject.php','permission'=>'listProject');
 
 addMenuAdminMantan($menus);
 
