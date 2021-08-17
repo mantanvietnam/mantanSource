@@ -150,7 +150,8 @@
 
     		if(!empty($image) && strpos($image, 'http') === false && strpos($image, 'https') === false ) $image= $urlHomes.$image;
     		
-    		echo '  <meta property="og:title" content="'.$title.'"/>
+    		echo '  <!-- Facebook Meta Tags -->
+    				<meta property="og:title" content="'.$title.'"/>
     				<meta property="og:type" content="'.$type.'"/>
     				<meta property="og:description" content="'.$description.'"/>
     				<meta property="og:url" content="'.$urlShare.'"/>
@@ -161,6 +162,12 @@
     				<meta property="fb:app_id" content="'.$idAppFacebook.'" /> 
     				<meta property="og:image:width" content="900" />
 					<meta property="og:image:height" content="603" />
+
+				    <!-- Twitter Meta Tags -->
+				    <meta name="twitter:card" content="summary_large_image">
+				    <meta name="twitter:title" content="'.$title.'">
+				    <meta name="twitter:description" content="'.$description.'">
+				    <meta name="twitter:image" content="'.$image.'">
     			';
 
     		/*

@@ -18,10 +18,12 @@
             $type=@$dataSend['type'];
             $note=@$dataSend['note'];
 
-            $utm_source=$_SESSION['utm_source'];
-            $utm_content=$_SESSION['utm_content'];
-            $utm_campaign=$_SESSION['utm_campaign'];
-            
+            $utm_source=@$_SESSION['utm_source'];
+            $utm_content=@$_SESSION['utm_content'];
+            $utm_campaign=@$_SESSION['utm_campaign'];
+
+
+
             $save=array(
                 'name'=>$name,
                 'email'=>$email,
@@ -34,42 +36,62 @@
                 'utm_content'=>$utm_content,
                 'utm_campaign'=>$utm_campaign,
                 'time'=>time(),
-                'from'=>'dangky',
+                'from'=>'manmoshop.com',
 
             );
+
+            
             $modelDK->create();
             if($modelDK->save($save)){
+                $listType= array(12=>'Cửa hàng');
+
             	$contact= $modelOption->getOption('contactSettings');
             	$from= array($contact['Option']['value']['email'] =>  $contact['Option']['value']['displayName']);
 				$to= array($contact['Option']['value']['email']);
-				$cc= array('khanhha390@gmail.com');
+				$cc= array('bangnh@manmo.vn','kinhdoanh@manmo3h.com','hoangvt@manmo.vn');
 				$bcc= array();
-				$subject= '['.$contact['Option']['value']['displayName'].'] Khách hàng đăng ký dùng thử ManMo 3H';
+				$subject= '['.$contact['Option']['value']['displayName'].'] Khách hàng đăng ký dùng thử ManMo Shop';
 				$content='	Full name: '.$name.'<br/> 
 							Address: '.$adrees.'<br/> 
 							Email: '.$email.'<br/> 
 							Phone: '.$fone.'<br/>
 							Website: '.$web.'<br/>
-							Type: '.$type.'<br/>
+							Type: '.$listType[$type].'<br/>
                             Note: '.$note.'<br/>
                             ';
 
 				
-				$modelDK->sendMail($from,$to,$cc,$bcc,$subject,$content);
-				$modelDK->redirect($urlHomes.'?code=1');
-            	/*
-                $regManager= sendDataConnectMantan('http://quanlyluutru.com/regManagerAPI',$dataSend);
-                //echo $regManager;
-                $regManager= json_decode($regManager);
-                //debug($regManager);die;
-                if($regManager['code']==1){
-                    $modelDK->redirect($urlHomes.'?code=1');
-                }else{
-                    $modelDK->redirect($urlHomes.'?code=-1');
+				
+
+				$urlReg= 'https://api.quanlyluutru.com/regManagerAPI';
+				$dataReg= array('fone'=>$fone,
+								'name'=>$name,
+								'email'=>$email,
+								'adrees'=>$adrees,
+								'nameHotel'=>$name,
+								'city'=>0,
+								'district'=>0,
+								'type'=>$type,
+								'anhPhong'=>'',
+								'anhWC'=>'',
+								'anhCong'=>'',
+								'anhBangGia'=>'',
+                                'nameSoft'=>'Phần mềm quản lý bán hàng ManMo Shop',
+                                'nameApp'=>'ManMo Shop',
+								);
+				$regManager= sendDataConnectMantan($urlReg,$dataReg);
+                
+                $regManager= str_replace('ï»¿', '', utf8_encode($regManager));
+                $regManager= json_decode($regManager, true);
+                
+                if(!empty($regManager['code']) && $regManager['code']==1){
+                    $modelDK->sendMail($from,$to,$cc,$bcc,$subject,$content);
                 }
-                */
+
+				$modelDK->redirect($urlHomes.'?codeReg='.@$regManager['code']);
+            	
             }else{
-                $modelDK->redirect($urlHomes.'?code=-2');
+                $modelDK->redirect($urlHomes.'?codeReg=-3');
             }
         }
     }

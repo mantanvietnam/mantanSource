@@ -86,7 +86,7 @@ if ($_SERVER["SERVER_PORT"] != "80" && $_SERVER["SERVER_PORT"] != "443")
 
 }
 
-//$baseUrl= $pageURL.$baseUrl;
+$baseUrl= $pageURL.$baseUrl;
 //$baseUrl= '/vi/app/webroot/upload/';
 
 //echo '<script type="text/javascript">window.location= "'.$baseUrl.'";</script>';

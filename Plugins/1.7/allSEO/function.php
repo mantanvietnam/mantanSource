@@ -246,7 +246,13 @@
 		
 		echo '<title>'.$metaTitleMantan.'</title>
 			  <meta name="description" content="'.$metaDescriptionMantan.'" />
-			  <meta name="keywords" content="'.$metaKeywordsMantan.'" />';
+			  <meta name="keywords" content="'.$metaKeywordsMantan.'" />
+
+			  <!-- Google / Search Engine Tags -->
+			  <meta itemprop="name" content="'.$metaTitleMantan.'">
+			  <meta itemprop="description" content="'.$metaDescriptionMantan.'">
+			  <meta itemprop="image" content="'.$metaImageMantan.'">
+			  ';
 	}
 
 	function checkFileExists($url)

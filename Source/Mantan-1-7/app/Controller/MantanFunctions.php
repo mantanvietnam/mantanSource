@@ -489,10 +489,10 @@ function showUploadFile($idInput='',$nameInput='',$value='',$number='')
 		}
 	</script>
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-xs-8 col-sm-8">
 			<input class="form-control" type="text" name="<?php echo $nameInput;?>" id='<?php echo $idInput;?>' value="<?php echo $value;?>" />
 		</div>
-		<div class="col-sm-2">
+		<div class="col-xs-2 col-sm-2">
 			<input type="button" class="btn btn-default" value="Upload" onclick="BrowseServerImage<?php echo $number;?>();" />
 		</div>
 	</div>
