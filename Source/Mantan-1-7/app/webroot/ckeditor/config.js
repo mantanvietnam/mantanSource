@@ -15,7 +15,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserImageUploadUrl = urlWebrootMantan+'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
 	config.filebrowserFlashUploadUrl = urlWebrootMantan+'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 
-	config.extraPlugins = 'video,html5video,widget,widgetselection,clipboard,lineutils';
+	//config.extraPlugins = 'video,html5video,widget,widgetselection,clipboard,lineutils';
 
 	config.height = '500px';
 	config.width = '100%';
