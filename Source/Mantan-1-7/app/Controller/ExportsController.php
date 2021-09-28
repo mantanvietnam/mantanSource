@@ -30,7 +30,7 @@ class ExportsController extends AppController {
         
         // close table and output
         ob_end_clean();
-        $fileName= (!empty($name))?$name.'.xlsx':time().'.xlsx';
+        $fileName= (!empty($name))?$name.'-'.date('d-m-Y').'.xlsx':date('d-m-Y-H-i').'.xlsx';
         $this->PhpExcel->addTableFooter()->output($fileName);
     }
 
