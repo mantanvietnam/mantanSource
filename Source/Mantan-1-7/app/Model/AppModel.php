@@ -54,7 +54,7 @@ class AppModel extends Model {
             $email->send();
             return true;
         }catch(Exception $e){
-            return false;
+            return $e;
         }
     }
     
