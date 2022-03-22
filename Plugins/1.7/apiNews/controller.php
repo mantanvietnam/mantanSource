@@ -40,7 +40,13 @@
 	{
 		if(!empty($_GET['id'])){
 			global $modelNotice;
+			global $metaTitleMantan;
+			global $metaImageMantan;
+
 			$data= $modelNotice->getNotice($_GET['id']);
+			$metaTitleMantan= @$data['Notice']['title'];
+			$metaKeywordsMantan= @$data['Notice']['key'];
+			$metaImageMantan= @$data['Notice']['image'];
 
 			setVariable('data',$data);
 		}
