@@ -43,9 +43,9 @@
 				if($page<=0) $page=1;
 				$limit= 15;
 				
-				$order=array('time'=>'desc','created' => 'desc','title'=>'asc');
+				$order=array('created' => 'desc');
 				$checkTime= false;
-				$fields=array('title','slug','event','view');
+				$fields=array('title','slug','event','view','created');
 
 				$return = $this->Notice->getPageData($page,$limit,$dk,$order,$checkTime,$fields);
                 //debug($return);die;

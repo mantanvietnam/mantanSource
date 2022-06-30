@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a target="_blank" class="navbar-brand" href="<?php echo @$infoMantanSource['web'];?>">
+                <a target="_blank" class="navbar-brand navbar-brand-respon" href="<?php echo @$infoMantanSource['web'];?>">
                 	Mantan Admin <?php echo @$infoMantanSource['verName'];?>
                 	<?php
 						if(isset($_SESSION['checkVerMantan'])){
@@ -76,7 +76,7 @@
                 
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle dropdown-toggle-respon" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">

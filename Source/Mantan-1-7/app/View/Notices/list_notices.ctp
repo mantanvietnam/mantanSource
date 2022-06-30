@@ -78,6 +78,7 @@
 
         <tr>
 
+            <td align="center"><?php echo $languageMantan['datePosted'];?></td>
             <td align="center"><?php echo $languageMantan['title'];?></td>
 
             <td align="center" width="75"><?php echo $languageMantan['event'];?></td>
@@ -92,7 +93,7 @@
 
             {
                     echo '<tr>
-
+                    		  <td>'.date('d/m/Y', $tin['Notice']['created']->sec).'</td>
                               <td><a target="_blank" href="'.getUrlNotice($tin['Notice']['id']).'">'.$tin['Notice']['title'].'</a></td>
                               <td align="center">';
 

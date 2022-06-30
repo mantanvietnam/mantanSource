@@ -312,10 +312,10 @@ table.dataTable thead .sorting:after {
     margin: 15px 0;
 }
 .page-header{
-	font-size: 18px;
+    font-size: 18px;
 }
 .page-header a{
-	color: #5E5E5E;
+    color: #5E5E5E;
 }
 .thumbImage {
     border: 0 none;
@@ -330,54 +330,85 @@ table.dataTable thead .sorting:after {
     padding: 10px;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
-	border: none !important;
+    border: none !important;
 }
 .congcu{
-	width: 60px;
-	margin-bottom: 10px;
-	cursor: pointer;
+    width: 60px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 .subMenuAdmin{
-	margin-left: 10px;
+    margin-left: 10px;
 }
 .title{
-	background-color: #428bca !important;
+    background-color: #428bca !important;
     color: #fff;
     font-size: 19px;
     padding: 5px;
     text-align: left;
 }
 .active,.active a{
-	background-color: #bcbcbc !important;
+    background-color: #bcbcbc !important;
     color: #fff;
 }
 .activeSub a{
-	color: #fff;
+    color: #fff;
     background-color: #777 !important;
 }
 #page-wrapper{
-	float: left;
-	width: 80%;
-}
+    float: left;
+    width: 80%;
+} 
 .congcu{
-	float: left;
+    float: left;
 }
 .clear{
-	clear: both;
+    clear: both;
 }
 .listCategory{
-	float: left;
+    float: left;
     width: 100%;
-	margin: 0;
+    margin: 0;
     padding: 0;
     list-style: none;
-	height: 145px;
+    height: 145px;
     overflow: scroll;
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .listCategory li ul{
-	margin: 0;
+    margin: 0;
     padding: 0;
-	list-style: none;
+    list-style: none;
 }
+#content{
+    overflow-x:auto ;
+}
+@media only screen and (max-width: 768px){
+    #page-wrapper{
+        float: left;
+        width: 100%;
+    } 
+    .taovien{
+        overflow-x: auto;
+    }
+    .navbar-top-links .dropdown-user{
+        left: 0px !important;
+    }
+}
+
+/* THAI ANH RESPON */
+
+    @media (min-width:319px) and (max-width:376px) {
+
+        .navbar-brand-respon {
+
+        }
+
+        .dropdown-toggle-respon {
+            padding-top: 35px !important;
+        }
+
+    }
+
+/* THAI ANH RESPON */
