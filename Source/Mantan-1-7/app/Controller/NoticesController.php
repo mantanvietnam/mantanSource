@@ -45,7 +45,7 @@
 				
 				$order=array('created' => 'desc');
 				$checkTime= false;
-				$fields=array('title','slug','event','view','created');
+				$fields=array('title','slug','event','view','created','time');
 
 				$return = $this->Notice->getPageData($page,$limit,$dk,$order,$checkTime,$fields);
                 //debug($return);die;

@@ -1,0 +1,117 @@
+.tableList{
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #bcbcbc;
+    border-left: 1px solid #bcbcbc;
+    word-break:break-all;
+}
+.tableList td,.tableList th{
+    padding: 5px;
+    border-bottom: 1px solid #bcbcbc;
+    border-right: 1px solid #bcbcbc;
+    word-break: break-all;
+}
+.tableList td td{
+    padding: 5px;
+    border: none !important;
+}
+.listComponents{clear: both;list-style: none;}
+.titleProperties{clear: both;margin: 0;padding-top: 10px;}
+.listComponents li{margin-right: 10px;}
+.noBorder td{
+    border: none !important;
+}
+#tabs{
+    width: 100%;
+}
+.tableShow td{
+    padding: 10px;
+    word-break: break-all;
+}
+.classInput{
+    width: 85%;
+}
+.textRed{
+    color: red;
+}
+.tableList th{
+    font-weight: bold;
+    text-align: center;
+}
+.break_word{
+    word-break: break-word;
+    width: 150px;
+}
+.success_mess{
+    color: #fff!important;
+    background-color: #337ab7;
+    padding: 10px;
+    font-size: 1.2em;
+}
+.error_mess{
+    color:red!important;
+}
+
+
+.opa_0{
+    opacity: 0;
+}
+.b_del{
+    display: block;
+    width: 100%;
+    height: 32px;
+}
+
+#summary-form .panel-body .form-group:first-of-type label{
+    padding-top: 0;
+}
+@media (min-width: 768px){
+    .form-horizontal .control-label {
+        text-align: right;
+        margin-bottom: 0;
+        padding-top: 0 !important;
+    }
+}
+
+.page-header .breadcrumbs a{
+    color: #1a951f;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    
+   vertical-align: inherit !important;
+}
+.table th{
+    text-align: center;
+   vertical-align: inherit !important;
+}
+.color_red{
+    color: red;
+}
+.color_green{
+    color: green;
+}
+.listCategory {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 145px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.product-main .tab-content {
+    height: 640px;
+}
+.product-main .tab-content .tab-pane {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 610px;
+    overflow: scroll;
+    overflow-x: hidden;
+}

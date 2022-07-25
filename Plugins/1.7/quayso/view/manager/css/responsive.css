@@ -1,0 +1,154 @@
+.panel-actions{
+	display: none;
+}
+.panel-title{
+	color: #000;
+	font-weight: bold;
+}
+
+input[type="submit"],input[type="button"]{
+	/*width: 100%*/;
+	/* margin-top: 10px; */
+	padding: 6px 12px;
+}
+.form-control{
+	width: 100% !important;
+}
+label{
+	margin-bottom: 0px;
+}
+.m_top10{
+	margin-top: 10px;
+}
+.form-group{
+	display: block !important;
+}
+
+@media screen and (max-width: 768px){
+	.page-header h2{
+		display: none;
+	}
+	.panel-title{
+		margin-bottom: 0;
+	}
+	.content-body{
+		padding: 40px 10px;
+	}
+	html.flexbox .inner-wrapper, html.flexboxlegacy .inner-wrapper{
+		display: -moz-box;
+		display: box;
+		display: -webkit-box;
+	}
+	.mb-md .btn-primary{
+		font-size: 13px;
+	}
+	.right-wrapper.pull-right{
+		margin-right: 25px;
+	}
+	.form-inline .form-group, .form-inline .input-group{
+		display: contents;
+		/* display: grid; */
+	}
+	.form-inline .btn-primary{
+		/* margin-top: 10px; */
+	}
+	input[type="submit"]{
+		width: 100%;
+		/* margin-top: 10px; */
+		padding: 6px 12px;
+	}
+	.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group{
+		height: 34px;
+	}
+	.m_ipad0{
+		margin-top: 10px;
+	}
+}
+
+@media screen and (max-width: 767px){
+	html.flexbox .inner-wrapper, html.flexboxlegacy .inner-wrapper{
+		display: block;
+	}
+	.page-header .breadcrumbs{
+		display: block;
+	}
+	.header .logo-container .logo{
+		display: inline-grid;
+	}
+	.header .toggle-sidebar-left{
+		top: 8px;
+	}
+	.header .logo-container .logo{
+		line-height: 21px;
+	}
+	.userbox {
+		margin: 1px 0 0 12px;
+	}
+	.page-header .breadcrumbs{
+		line-height: 1;
+	}
+	.page-header{
+		margin: 0;
+	}
+	.content-body {
+		padding: 0px;
+	}
+	.right-wrapper.pull-right{
+		padding-top: 4px;
+		padding-left: 15px;
+	}
+	.m_t_ip10{
+		margin-top: 10px;
+	}
+	.form-inline .btn-primary{
+		/* margin-top: 10px; */
+	}
+	input[type="submit"]{
+		/* margin-top: 10px; */
+	}
+	.m_ipad0 {
+		margin-top: 0px;
+	}
+
+
+}
+
+@media screen and (max-width: 320px){
+	.header .toggle-sidebar-left{
+		top: 0;
+	}
+}
+
+
+
+.custom-search-input{
+	padding: 3px;
+	border: solid 1px #E4E4E4;
+	border-radius: 6px;
+	background-color: #fff;
+}
+
+.custom-search-input input{
+	border: 0;
+	box-shadow: none;
+}
+
+.custom-search-input button{
+	margin: 2px 0 0 0;
+	background: none;
+	box-shadow: none;
+	border: 0;
+	color: #666666;
+	padding: 0 8px 0 10px;
+	border-left: solid 1px #ccc;
+}
+
+.custom-search-input button:hover{
+	border: 0;
+	box-shadow: none;
+	border-left: solid 1px #ccc;
+}
+
+.custom-search-input .glyphicon-search{
+	font-size: 16px;
+}
