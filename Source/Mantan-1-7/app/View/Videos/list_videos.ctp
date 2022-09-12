@@ -44,11 +44,12 @@
 			}
 		}
 		
-		function editData(id,code)
+		function editData(id,code,category)
 		{
 			document.getElementById("title").value= document.getElementById("name"+id).innerHTML ;
 			document.getElementById("codeVideo").value= code ;
 			document.getElementById("idVideo").value= id;
+			document.getElementById("category").value= category;
 			document.getElementById("image").value= document.getElementById("image"+id).src ;
 			document.getElementById("description").value= document.getElementById("description"+id).innerHTML ;
 			
@@ -101,7 +102,7 @@
 	                  	<td>
 		                  	<input class="btn btn-default" onclick="deleteData('<?php echo $video['Video']['id'];?>')" type="button" value="<?php echo $languageMantan['delete'];?>" />
                           &nbsp;
-                            <input class="btn btn-default" onclick="editData('<?php echo $video['Video']['id'];?>','<?php echo $video['Video']['code'];?>')" type="button" value="<?php echo $languageMantan['edit'];?>" />
+                            <input class="btn btn-default" onclick="editData('<?php echo $video['Video']['id'];?>','<?php echo $video['Video']['code'];?>','<?php echo @$video['Video']['category'];?>')" type="button" value="<?php echo $languageMantan['edit'];?>" />
 	                  	</td>
                   	</tr>
                   <?php }?>
@@ -135,6 +136,32 @@
 		      <?php showUploadFile('image','image');?>
 			  <p style="clear: both;"><b><?php echo $languageMantan['description'];?></b></p>
 			  <input type="text" name="description" value="" id="description" class="form-control" style="width:250px;"/>
+			  <p style="clear: both;"><b><?php echo $languageMantan['categories'];?></b></p>
+			  <select name="category" class="form-control" id="category" required>
+			  	<option value=""><?php echo $languageMantan['choose'];?></option>
+			  	<?php 
+			  		if(!empty($group)){
+			  			foreach ($group as $cat) {
+			  				echo '<option value="'.$cat['id'].'">'.$cat['name'].'</option>';
+			  				if(!empty($cat['sub'])){
+			  					foreach ($cat['sub'] as $sub) {
+					  				echo '<option value="'.$sub['id'].'">'.$sub['name'].'</option>';
+					  				if(!empty($sub['sub'])){
+					  					foreach ($sub['sub'] as $minisub) {
+							  				echo '<option value="'.$minisub['id'].'">'.$minisub['name'].'</option>';
+							  				if(!empty($minisub['sub'])){
+							  					foreach ($minisub['sub'] as $item) {
+									  				echo '<option value="'.$item['id'].'">'.$item['name'].'</option>';
+									  			}
+							  				}
+							  			}
+					  				}
+					  			}
+			  				}
+			  			}
+			  		}
+			  	?>
+			  </select>
 		      <br/>
 		      <p><input type='submit' value='<?php echo $languageMantan['save'];?>' class="btn btn-default" /></p>
 		  </form>

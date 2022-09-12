@@ -104,6 +104,198 @@
 	        	$this->Option->changeCategoryNotice($type,$idMenu);
 	        }
         }
+
+// Category video -------------------------------------------------------
+
+        function categoryVideo()
+        {
+        	  //Configure::write('debug', 2);
+	          $users= $this->Session->read('infoAdminLogin');
+	
+	          if($users)
+	          {
+	          		Controller::loadModel('Option');
+		            $this->setup();
+	
+		            $chuyenmuc= $this->Option->getOption('categoryVideo');
+
+		            $chuyenmuc['Option']['value']['category']= (isset($chuyenmuc['Option']['value']['category']))?$chuyenmuc['Option']['value']['category']:array();
+	
+		            $this->set('group', $chuyenmuc['Option']['value']['category']);
+	
+	          }
+	          else 
+              {
+	            	$urlLocal= $this->getUrlLocal();
+		            $this->redirect($urlLocal['urlAdmins'].'login');
+              }
+        }
+        
+        
+		function saveCategoryVideo()
+		{
+			//Configure::write('debug', 2);
+			$users= $this->Session->read('infoAdminLogin');
+			
+			Controller::loadModel('Option');
+			//Controller::loadModel('Slug');
+
+        	$urlLocal= $this->getUrlLocal();
+        	
+			if($users)
+			{
+				$idCatEdit= $_POST['idCatEdit'];
+				$name= $_POST['name'];
+				$parent= (int) $_POST['parent'];
+				$slug= createSlugMantan($_POST['name']);
+				//$slug= $this->Slug->saveSlug($slug,'notices','cat');
+				$key= $_POST['key'];
+                $image= $_POST['image'];
+				$description= $_POST['description'];
+				$content= $_POST['content'];
+				
+				$return= -1;
+				if($name != '')
+				{
+					$return= $this->Option->saveCategoryVideo($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content);
+				}
+				$this->redirect($urlLocal['urlOptions']."categoryVideo");
+	
+			}
+			else 
+            {
+	            $this->redirect($urlLocal['urlAdmins'].'login');
+            }
+		}
+		
+		function deleteCategoryVideo()
+		{
+			//Configure::write('debug', 2);
+			
+			$idCat= (int) $_POST['idDelete'];
+			$slugCat= (int) $_POST['slugDelete'];
+			$users= $this->Session->read('infoAdminLogin');
+	
+			if($users)
+			{
+				Controller::loadModel('Option');
+				Controller::loadModel('Slug');
+
+				$return= $this->Option->deleteCategoryVideo($idCat);
+				$this->Slug->deleteSlug($slugCat);
+			}
+		}   
+        
+        function changeCategoryVideo()
+        {
+        	//Configure::write('debug', 2);
+	        $users= $this->Session->read('infoAdminLogin');
+	        if($users)
+	        {
+	        	Controller::loadModel('Option');
+	        	$type= $_POST['type'];
+	        	$idMenu= (int) $_POST['idMenu'];
+	        	
+	        	$this->Option->changeCategoryVideo($type,$idMenu);
+	        }
+        }
+
+// Category album -------------------------------------------------------
+
+        function categoryAlbum()
+        {
+        	  //Configure::write('debug', 2);
+	          $users= $this->Session->read('infoAdminLogin');
+	
+	          if($users)
+	          {
+	          		Controller::loadModel('Option');
+		            $this->setup();
+	
+		            $chuyenmuc= $this->Option->getOption('categoryAlbum');
+
+		            $chuyenmuc['Option']['value']['category']= (isset($chuyenmuc['Option']['value']['category']))?$chuyenmuc['Option']['value']['category']:array();
+	
+		            $this->set('group', $chuyenmuc['Option']['value']['category']);
+	
+	          }
+	          else 
+              {
+	            	$urlLocal= $this->getUrlLocal();
+		            $this->redirect($urlLocal['urlAdmins'].'login');
+              }
+        }
+        
+        
+		function saveCategoryAlbum()
+		{
+			//Configure::write('debug', 2);
+			$users= $this->Session->read('infoAdminLogin');
+			
+			Controller::loadModel('Option');
+			//Controller::loadModel('Slug');
+
+        	$urlLocal= $this->getUrlLocal();
+        	
+			if($users)
+			{
+				$idCatEdit= $_POST['idCatEdit'];
+				$name= $_POST['name'];
+				$parent= (int) $_POST['parent'];
+				$slug= createSlugMantan($_POST['name']);
+				//$slug= $this->Slug->saveSlug($slug,'notices','cat');
+				$key= $_POST['key'];
+                $image= $_POST['image'];
+				$description= $_POST['description'];
+				$content= $_POST['content'];
+				
+				$return= -1;
+				if($name != '')
+				{
+					$return= $this->Option->saveCategoryAlbum($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content);
+				}
+				$this->redirect($urlLocal['urlOptions']."categoryAlbum");
+	
+			}
+			else 
+            {
+	            $this->redirect($urlLocal['urlAdmins'].'login');
+            }
+		}
+		
+		function deleteCategoryAlbum()
+		{
+			//Configure::write('debug', 2);
+			
+			$idCat= (int) $_POST['idDelete'];
+			$slugCat= (int) $_POST['slugDelete'];
+			$users= $this->Session->read('infoAdminLogin');
+	
+			if($users)
+			{
+				Controller::loadModel('Option');
+				Controller::loadModel('Slug');
+
+				$return= $this->Option->deleteCategoryAlbum($idCat);
+				$this->Slug->deleteSlug($slugCat);
+			}
+		}   
+        
+        function changeCategoryAlbum()
+        {
+        	//Configure::write('debug', 2);
+	        $users= $this->Session->read('infoAdminLogin');
+	        if($users)
+	        {
+	        	Controller::loadModel('Option');
+	        	$type= $_POST['type'];
+	        	$idMenu= (int) $_POST['idMenu'];
+	        	
+	        	$this->Option->changeCategoryAlbum($type,$idMenu);
+	        }
+        }
+
+
 // Theme ---------------------------
 	function themes()
 	{
@@ -277,6 +469,9 @@
             	$urlLocal= $this->getUrlLocal();
                 
                 $categoryNotice= $this->Option->getOption('categoryNotice');
+                $categoryVideo= $this->Option->getOption('categoryVideo');
+                $categoryAlbum= $this->Option->getOption('categoryAlbum');
+
                 $menus= $this->Option->getOption('menus','all');
                 $this->set('menus', $menus);
                 
@@ -319,6 +514,14 @@
                 if(!isset($categoryNotice['Option']['value']['category'])){
                 	$categoryNotice['Option']['value']['category']= array();
                 }
+
+                if(!isset($categoryVideo['Option']['value']['category'])){
+                	$categoryVideo['Option']['value']['category']= array();
+                }
+
+                if(!isset($categoryAlbum['Option']['value']['category'])){
+                	$categoryAlbum['Option']['value']['category']= array();
+                }
 				
                 $menusSystem=array (array('title'=>$languageMantan['menuSystem'],
                 										'sub'=>array(
@@ -338,6 +541,12 @@
 														),
 													array('title'=>$languageMantan['newsCategories'],
                 										  'sub'=>$this->changeTypeCategory($categoryNotice['Option']['value']['category'],'/')
+														  ),
+													array('title'=>$languageMantan['categories'].' '.$languageMantan['video'],
+                										  'sub'=>$this->changeTypeCategory($categoryVideo['Option']['value']['category'],'/')
+														  ),
+													array('title'=>$languageMantan['categories'].' '.$languageMantan['album'],
+                										  'sub'=>$this->changeTypeCategory($categoryAlbum['Option']['value']['category'],'/')
 														  ),
 													array('title'=>$languageMantan['pages'],
                 										  'sub'=>$pages

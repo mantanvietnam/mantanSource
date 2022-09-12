@@ -10,7 +10,7 @@ function getHistoryTPBank($input)
 	$username= $tpbankSetting['Option']['value']['account'];
 	$password= $tpbankSetting['Option']['value']['pass'];
 	$stk_tpbank= $tpbankSetting['Option']['value']['stk'];
-	$keyApp= $tpbankSetting['Option']['value']['key'];
+	$keyApp= strtoupper($tpbankSetting['Option']['value']['key']);
 
 	$token= get_token_tpbank($username,$password);
 	$token= json_decode($token, true);
@@ -23,8 +23,9 @@ function getHistoryTPBank($input)
 		$listHistory= json_decode($listHistory, true);
 		
 		if(!empty($listHistory['transactionInfos'])){
-			//debug($listHistory['transactionInfos']);
 			foreach ($listHistory['transactionInfos'] as $key => $value) {
+				$value['description'] = strtoupper($value['description']);
+				
 				if($value['creditDebitIndicator']=='CRDT' && strlen(strstr($value['description'], $keyApp)) > 0){
 					$checkHistoryBank= $modelHistoryBank->find('count', array('conditions'=>array('transaction.id'=>$value['id'])));
 
@@ -34,6 +35,11 @@ function getHistoryTPBank($input)
 						if(count($descriptions)==1){
 							$descriptions = explode('.', $descriptions[0]);
 						}
+
+						if(count($descriptions)==1){
+							$descriptions = explode('-', $descriptions[0]);
+						}
+
 						$description = '';
 
 						foreach ($descriptions as $key => $item) {

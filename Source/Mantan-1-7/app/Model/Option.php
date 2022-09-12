@@ -201,6 +201,11 @@
 			{
 				$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCat,-1,0);
 				$this->save($groups,  false,  array('value') );
+
+				$modelSlug= ClassRegistry::init('Slug');
+				$modelSlug->deleteAll(array('slug'=>$cats['slug']));
+				$modelSlug->writeFileSlug();
+
 				return 1;
 			}
 			
@@ -338,6 +343,198 @@
 	   			}
 	   		}
 	   		return $cats;
+	   }
+// category video
+	   function changeCategoryVideo($type,$idMenu)
+	   {
+		   $dk = array ('key' => 'categoryVideo');
+	       $return = $this -> find('first', array('conditions' => $dk) );
+           if($return)
+           {
+           		$return['Option']['value']['category']= $this->sapXepCat($type,$idMenu,$return['Option']['value']['category']);
+           		$this->save($return, false, array("value"));	
+           }
+	   }
+	   
+	   function saveCategoryVideo($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content)
+	   {
+	   		$dk = array ('key' => 'categoryVideo');
+	   		$modelSlug= ClassRegistry::init('Slug');
+
+            $groups= $this -> find('first', array('conditions' => $dk) );
+	   		if(!$groups) 
+            {
+         	  $groups['Option']['key']= 'categoryVideo';
+            }
+	   		
+			if($idCatEdit=='')
+			{
+				$groups['Option']['value']['tCategory']+= 1;
+				$infoSlug= $modelSlug->saveSlug($slug,'','videos','cat');
+				$save= array(
+								'name'=>$name,
+								'id'=>$groups['Option']['value']['tCategory'],
+								'slug'=>$infoSlug['slug'],
+								'idSlug'=>$infoSlug['idSlug'],
+								'key'=>$key,
+								'description'=>$description,
+                                'image' => $image,						
+                                'content' => $content					
+							); 	 
+				if($parent==0)
+				{
+					$groups['Option']['value']['category'][ $groups['Option']['value']['tCategory'] ]= $save;
+				}  	
+				else
+				{
+					$groups['Option']['value']['category']= $this->addCat($groups['Option']['value']['category'],$parent,$save);	
+				}	
+				
+			}
+			else
+			{
+				$idCatEdit= (int) $idCatEdit;
+				
+				$cats= $this->getcat($groups['Option']['value']['category'],$idCatEdit);
+				if($cats)
+				{
+					$infoSlug= $modelSlug->saveSlug($slug,$cats['idSlug'],'videos','cat');
+					//debug('da vao');
+					$cats['slug']= $infoSlug['slug'];
+					$cats['idSlug']= $infoSlug['idSlug'];
+					$cats['name']= $name;
+					$cats['key']= $key;
+					$cats['description']= $description;
+					$cats['image']= $image;
+					$cats['content']= $content;
+					
+					$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCatEdit,$parent,0);
+					//debug($groups['Manager']['category']);
+					$groups['Option']['value']['category']= $this->addCat($groups['Option']['value']['category'],$parent,$cats);
+					//debug($groups['Manager']['category']);
+				}
+				
+			}
+			$this->save($groups);
+			return 1;	
+	   		
+	   }
+	   function deleteCategoryVideo($idCat)
+	   {
+			
+			$dk = array ('key' => 'categoryVideo');
+
+            $groups= $this -> find('first', array('conditions' => $dk) );
+	   		
+			$cats= $this->getcat($groups['Option']['value']['category'],$idCat);
+			if($cats)
+			{
+				$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCat,-1,0);
+				$this->save($groups,  false,  array('value') );
+
+				$modelSlug= ClassRegistry::init('Slug');
+				$modelSlug->deleteAll(array('slug'=>$cats['slug']));
+				$modelSlug->writeFileSlug();
+				return 1;
+			}
+			
+			return -1;
+	   }
+// category album
+	   function changeCategoryAlbum($type,$idMenu)
+	   {
+		   $dk = array ('key' => 'categoryAlbum');
+	       $return = $this -> find('first', array('conditions' => $dk) );
+           if($return)
+           {
+           		$return['Option']['value']['category']= $this->sapXepCat($type,$idMenu,$return['Option']['value']['category']);
+           		$this->save($return, false, array("value"));	
+           }
+	   }
+	   
+	   function saveCategoryAlbum($slug,$idCatEdit,$name,$parent,$key,$description,$image,$content)
+	   {
+	   		$dk = array ('key' => 'categoryAlbum');
+	   		$modelSlug= ClassRegistry::init('Slug');
+
+            $groups= $this -> find('first', array('conditions' => $dk) );
+	   		if(!$groups) 
+            {
+         	  $groups['Option']['key']= 'categoryAlbum';
+            }
+	   		
+			if($idCatEdit=='')
+			{
+				$groups['Option']['value']['tCategory']+= 1;
+				$infoSlug= $modelSlug->saveSlug($slug,'','albums','cat');
+				$save= array(
+								'name'=>$name,
+								'id'=>$groups['Option']['value']['tCategory'],
+								'slug'=>$infoSlug['slug'],
+								'idSlug'=>$infoSlug['idSlug'],
+								'key'=>$key,
+								'description'=>$description,
+                                'image' => $image,						
+                                'content' => $content					
+							); 	 
+				if($parent==0)
+				{
+					$groups['Option']['value']['category'][ $groups['Option']['value']['tCategory'] ]= $save;
+				}  	
+				else
+				{
+					$groups['Option']['value']['category']= $this->addCat($groups['Option']['value']['category'],$parent,$save);	
+				}	
+				
+			}
+			else
+			{
+				$idCatEdit= (int) $idCatEdit;
+				
+				$cats= $this->getcat($groups['Option']['value']['category'],$idCatEdit);
+				if($cats)
+				{
+					$infoSlug= $modelSlug->saveSlug($slug,$cats['idSlug'],'albums','cat');
+					//debug('da vao');
+					$cats['slug']= $infoSlug['slug'];
+					$cats['idSlug']= $infoSlug['idSlug'];
+					$cats['name']= $name;
+					$cats['key']= $key;
+					$cats['description']= $description;
+					$cats['image']= $image;
+					$cats['content']= $content;
+					
+					$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCatEdit,$parent,0);
+					//debug($groups['Manager']['category']);
+					$groups['Option']['value']['category']= $this->addCat($groups['Option']['value']['category'],$parent,$cats);
+					//debug($groups['Manager']['category']);
+				}
+				
+			}
+			$this->save($groups);
+			return 1;	
+	   		
+	   }
+	   function deleteCategoryAlbum($idCat)
+	   {
+			
+			$dk = array ('key' => 'categoryAlbum');
+
+            $groups= $this -> find('first', array('conditions' => $dk) );
+	   		
+			$cats= $this->getcat($groups['Option']['value']['category'],$idCat);
+			if($cats)
+			{
+				$groups['Option']['value']['category']= $this->deleteCat($groups['Option']['value']['category'],$idCat,-1,0);
+				$this->save($groups,  false,  array('value') );
+
+				$modelSlug= ClassRegistry::init('Slug');
+				$modelSlug->deleteAll(array('slug'=>$cats['slug']));
+				$modelSlug->writeFileSlug();
+				return 1;
+			}
+			
+			return -1;
 	   }
 // Quan ly trinh don
 	   function saveInfoMenu($name,$id)

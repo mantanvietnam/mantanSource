@@ -30,7 +30,7 @@
 	       return $this -> find('all', $array);             
        }
 
-       function saveAlbumNew($time,$title,$image,$key,$slug,$lock,$id= null)
+       function saveAlbumNew($time,$title,$image,$key,$slug,$lock,$id= null,$category)
        {
         $modelSlug= ClassRegistry::init('Slug');
          if($id != null)
@@ -55,6 +55,7 @@
          $save['Album']['slug']= $infoSlug['slug'];
          $save['Album']['idSlug']= $infoSlug['idSlug'];
          $save['Album']['lock']= $lock;
+         $save['Album']['category']= $category;
 
          $this->save($save);
          

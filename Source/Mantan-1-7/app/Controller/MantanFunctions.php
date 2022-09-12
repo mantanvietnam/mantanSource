@@ -312,7 +312,53 @@ function getUrlNoticeCategory($id='',$slug='')
 	}else{
 		return $urlHomes.$infoSite['Option']['value']['seoURL']['notices'].'/'.$infoSite['Option']['value']['seoURL']['cat'].'/';
 	}
-}     
+}    
+
+function getUrlVideoCategory($id='',$slug='')
+{
+	global $modelNotice;
+	global $modelOption;
+	global $urlHomes;
+	global $infoSite;
+	
+	if($slug!=''){
+		//return $urlHomes.$infoSite['Option']['value']['seoURL']['notices'].'/'.$infoSite['Option']['value']['seoURL']['cat'].'/'.$slug.'.html';
+		return $urlHomes.$slug.'.html';
+	}elseif($id!=''){
+		$id= (int) $id;
+		$category= $modelOption->getOption('categoryVideo');
+		$category= $modelOption->getcat($category['Option']['value']['category'],$id);
+		
+		//return $urlHomes.$infoSite['Option']['value']['seoURL']['notices'].'/'.$infoSite['Option']['value']['seoURL']['cat'].'/'.$category['slug'].'.html';
+		return $urlHomes.$category['slug'].'.html';
+	
+	}else{
+		return $urlHomes.'/videos/cat/';
+	}
+}  
+
+function getUrlAlbumCategory($id='',$slug='')
+{
+	global $modelNotice;
+	global $modelOption;
+	global $urlHomes;
+	global $infoSite;
+	
+	if($slug!=''){
+		//return $urlHomes.$infoSite['Option']['value']['seoURL']['notices'].'/'.$infoSite['Option']['value']['seoURL']['cat'].'/'.$slug.'.html';
+		return $urlHomes.$slug.'.html';
+	}elseif($id!=''){
+		$id= (int) $id;
+		$category= $modelOption->getOption('categoryAlbum');
+		$category= $modelOption->getcat($category['Option']['value']['category'],$id);
+		
+		//return $urlHomes.$infoSite['Option']['value']['seoURL']['notices'].'/'.$infoSite['Option']['value']['seoURL']['cat'].'/'.$category['slug'].'.html';
+		return $urlHomes.$category['slug'].'.html';
+	
+	}else{
+		return $urlHomes.'/albums/cat/';
+	}
+}  
 
 function getUrlAlbum($id='',$slug='')  
 {

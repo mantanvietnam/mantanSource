@@ -7,6 +7,43 @@
 	                <td><input type="text" onkeyup="createSlug('slugEdit','titleEdit');" onchange="createSlug('slugEdit','titleEdit');" name="title" id='titleEdit' value="<?php if(isset($news['Album']['title'])) echo $news['Album']['title'];?>" class="form-control" /></td>
 	            </tr>
 	            <tr>
+	                <td><?php echo $languageMantan['categories'];?> (*)</td>
+	                <td>
+	            		<select name="category" class="form-control" id="category" required>
+						  	<option value=""><?php echo $languageMantan['choose'];?></option>
+						  	<?php 
+						  		if(!empty($group)){
+						  			foreach ($group as $cat) {
+						  				$select = (!empty($news['Album']['category']) && $news['Album']['category']==$cat['id'])?'selected':'';
+						  				echo '<option '.$select.' value="'.$cat['id'].'">'.$cat['name'].'</option>';
+						  				if(!empty($cat['sub'])){
+						  					foreach ($cat['sub'] as $sub) {
+						  						$select = (!emply($news['Album']['category']) && $news['Album']['category']==$sub['id'])?'selected':'';
+
+								  				echo '<option '.$select.' value="'.$sub['id'].'">'.$sub['name'].'</option>';
+								  				if(!empty($sub['sub'])){
+								  					foreach ($sub['sub'] as $minisub) {
+								  						$select = (!emply($news['Album']['category']) && $news['Album']['category']==$minisub['id'])?'selected':'';
+
+										  				echo '<option '.$select.' value="'.$minisub['id'].'">'.$minisub['name'].'</option>';
+										  				if(!empty($minisub['sub'])){
+										  					foreach ($minisub['sub'] as $item) {
+										  						$select = (!emply($news['Album']['category']) && $news['Album']['category']==$item['id'])?'selected':'';
+
+												  				echo '<option '.$select.' value="'.$item['id'].'">'.$item['name'].'</option>';
+												  			}
+										  				}
+										  			}
+								  				}
+								  			}
+						  				}
+						  			}
+						  		}
+						  	?>
+						  </select>
+	            	</td>
+	            </tr>
+	            <tr>
 	                <td><?php echo $languageMantan['ilustration'];?> (*)</td>
 	                <td>
 	                	<?php showUploadFile('imageEdit','image',$news['Album']['img'][0]['src'],'Edit');?>

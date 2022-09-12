@@ -30,6 +30,7 @@
 		      url: urlWeb+"editInfoAlbum",
 		      data: { id:idAlbum}
 		    }).done(function( msg ) { 	
+		    		console.log(msg);
 		    		$('#editData').html(msg);
 		    		
 			  		$('#editData').lightbox_me({
@@ -40,7 +41,7 @@
 					}); 	
 			 })
 			 .fail(function() {
-					window.location= urlWeb;
+					//window.location= urlWeb;
 				});  
 		}
 		
@@ -201,6 +202,36 @@
 	            <tr>
 	                <td><?php echo $languageMantan['nameAlbum'];?> (*)</td>
 	                <td><input required="" type="text"  name="title" id='title' value="" class="form-control" /></td>
+	            </tr>
+	            <tr>
+	            	<td><?php echo $languageMantan['categories'];?> (*)</td>
+	            	<td>
+	            		<select name="category" class="form-control" id="category" required>
+								  	<option value=""><?php echo $languageMantan['choose'];?></option>
+								  	<?php 
+								  		if(!empty($group)){
+								  			foreach ($group as $cat) {
+								  				echo '<option value="'.$cat['id'].'">'.$cat['name'].'</option>';
+								  				if(!empty($cat['sub'])){
+								  					foreach ($cat['sub'] as $sub) {
+										  				echo '<option value="'.$sub['id'].'">'.$sub['name'].'</option>';
+										  				if(!empty($sub['sub'])){
+										  					foreach ($sub['sub'] as $minisub) {
+												  				echo '<option value="'.$minisub['id'].'">'.$minisub['name'].'</option>';
+												  				if(!empty($minisub['sub'])){
+												  					foreach ($minisub['sub'] as $item) {
+														  				echo '<option value="'.$item['id'].'">'.$item['name'].'</option>';
+														  			}
+												  				}
+												  			}
+										  				}
+										  			}
+								  				}
+								  			}
+								  		}
+								  	?>
+								  </select>
+	            	</td>
 	            </tr>
 	            <tr>
 	                <td><?php echo $languageMantan['ilustration'];?> (*)</td>

@@ -161,6 +161,7 @@
              $data= $this->Notice->find('first',array('conditions'=>array('_id'=>$id)));
               if($data){
                 $this->Slug->deleteSlug($data['Notice']['slug']);
+                $this->Slug->writeFileSlug();
                 $this->Notice->delete($id);
 
                 $url= 'https://'.$_SERVER['SERVER_NAME'].'/'.$data['Notice']['slug'].'.html';

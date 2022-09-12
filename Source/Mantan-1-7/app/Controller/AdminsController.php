@@ -118,7 +118,7 @@
 		       Controller::loadModel('Admin');
 		       $url= $this->getUrlLocal();
 		       
-		       $powers= array('infoSite','listNotices','categoryNotice','listPages','listAlbums','listVideos','listFiles','languages','themes','menus','plugins','sitemap','listAccount','listUser','logout');
+		       $powers= array('infoSite','listNotices','categoryNotice','listPages','listAlbums','listVideos','listFiles','languages','themes','menus','plugins','sitemap','listAccount','listUser','logout','categoryAlbum','categoryVideo');
 		       
 		       $this->Admin->saveAdmin($user,$pass,$powers);
 		       

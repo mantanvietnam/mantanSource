@@ -14,7 +14,7 @@
          if($users)
          {
 	         	 $this->setup();
-	             
+	             Controller::loadModel('Option');
 	             Controller::loadModel('Video');
 				 $dk= array();
                  $this->paginate = array(
@@ -30,6 +30,12 @@
                 
                 $return = $this->paginate("Video");
                 
+                $chuyenmuc= $this->Option->getOption('categoryVideo');
+
+		            $chuyenmuc['Option']['value']['category']= (isset($chuyenmuc['Option']['value']['category']))?$chuyenmuc['Option']['value']['category']:array();
+	
+		            $this->set('group', $chuyenmuc['Option']['value']['category']);
+
                 $this->set('listData', $return);
 
 
@@ -56,15 +62,16 @@
 
 	       		$name= $_POST['name'];
 	       		$code= $_POST['code'];
+	       		$category= $_POST['category'];
 				
-				$image= ($_POST['image']!='')?$_POST['image']:"http://img.youtube.com/vi/".$_POST['code']."/0.jpg";
-				$description= $_POST['description'];
+					$image= ($_POST['image']!='')?$_POST['image']:"http://img.youtube.com/vi/".$_POST['code']."/0.jpg";
+					$description= $_POST['description'];
 				
 	       		$id= $_POST['id'];
 	       		$slug= createSlugMantan($name);
 	       		//$slug= $this->Slug->saveSlug($slug,'videos','index');
 
-	       		$this->Video->saveData($name,$code,$slug,$image,$description,$id);
+	       		$this->Video->saveData($name,$code,$slug,$image,$description,$id,$category);
 	       		$this->redirect($urlLocal['urlVideos'].'listVideos');
 	       }
 	       else 
@@ -87,6 +94,7 @@
 		       		$data= $this->Video->find('first',array('conditions'=>array('_id'=>$id)));
 	                  if($data){
 	                    $this->Slug->deleteSlug($data['Video']['slug']);
+	                    $this->Slug->writeFileSlug();
 	                    $this->Video->delete($id);
 	                  }
 	                  
@@ -180,6 +188,93 @@
 			}
 
             $this->set('slug', $slug);
-		}	   
+		}	
+
+		function cat($slug=null)
+		{
+			//Configure::write('debug', 2);
+			global $categoryVideo;
+			global $isCategory;
+			global $infoSite;
+			
+			//$isCategory= true;
+			
+			$this->setup();
+			$this->layout='default';
+			
+			Controller::loadModel('Video');
+			Controller::loadModel('Option');
+			
+			$urlLocal= $this->getUrlLocal();
+			if(empty($slug)) $slug= $this->request->url;
+			$slug= str_replace('.html', '', $slug);
+			$category= $this->Option->getOption('categoryVideo');
+			
+			$category= $this->Option->getcat($category['Option']['value']['category'],$slug,'slug');
+			
+			if($category)
+			{
+				$dk = array ('category' => (string) $category['id']);
+				
+				$page= (isset($_GET['page']))? (int) $_GET['page']:1;
+				if($page<=0) $page=1;
+				$limit= $infoSite['Option']['value']['postsOnThePage'];
+				$order=array('created' => 'desc','title'=>'asc');
+
+				$return = $this->Video->getPageData($page,$limit,$dk,$order);
+				
+				$totalData= $this->Video->find('count',array('conditions' => $dk));
+				$urlNow= curPageURL(1);
+		
+				$balance= $totalData%$limit;
+				$totalPage= ($totalData-$balance)/$limit;
+				if($balance>0)$totalPage+=1;
+				
+				$back=$page-1;$next=$page+1;
+				if($back<=0) $back=1;
+				if($next>=$totalPage) $next=$totalPage;
+				
+				if(isset($_GET['page'])){
+					$urlPage= str_replace('&page='.$_GET['page'], '', $urlNow);
+					$urlPage= str_replace('page='.$_GET['page'], '', $urlPage);
+				}else{
+					$urlPage= $urlNow;
+				}
+
+				if(strpos($urlPage,'?')!== false){
+					if(count($_GET)>1 ||  (count($_GET)==1 && !isset($_GET['page']))){
+						$urlPage= $urlPage.'&page=';
+					}else{
+						$urlPage= $urlPage.'page=';
+					}
+				}else{
+					$urlPage= $urlPage.'?page=';
+				}
+			
+				$this->set('page', $page);
+				$this->set('totalPage', $totalPage);
+				$this->set('back', $back);
+				$this->set('next', $next);
+				$this->set('urlPage', $urlPage);
+		        
+		        $this->set('listVideos', $return);
+		        $this->set('category', $category);
+		        
+		        $categoryVideo= $category;
+		        
+		      global $metaTitleMantan;
+				global $metaKeywordsMantan;
+				global $metaDescriptionMantan;
+				
+				$metaTitleMantan= (isset($category['name']))?$category['name']:'';
+				$metaKeywordsMantan= (isset($category['key']))?$category['key']:'';
+				$metaDescriptionMantan= (isset($category['description']))?$category['description']:'';
+	        }
+	        else
+			{
+				$this->redirect($urlLocal['urlHomes']);
+			}
+	        
+		}   
    }
 ?>

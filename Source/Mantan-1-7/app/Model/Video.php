@@ -13,13 +13,9 @@
           return $listData;
        }
 	   
-	   function getPageData($page=1,$limit=null,$conditions=array(),$order=array('time'=>'desc','created' => 'desc','name'=>'asc'),$checkTime= false)
+	   function getPageData($page=1,$limit=null,$conditions=array(),$order=array('time'=>'desc','created' => 'desc','name'=>'asc'))
        {
-		   if($checkTime){
-			  $today= getdate();
-			  $conditions['time']= array('$lte' => $today[0]);
-		  }
-		  
+		   
 	       $array= array(
 	                        'limit' => $limit,
 	                        'page' => $page,
@@ -30,7 +26,7 @@
 	       return $this -> find('all', $array);             
        }
        
-       function saveData($name,$code,$slug,$image,$description,$id= null)
+       function saveData($name,$code,$slug,$image,$description,$id= null,$category=0)
        {
        		 $modelSlug= ClassRegistry::init('Slug');
 	         if($id)
@@ -53,6 +49,7 @@
          	$save['Video']['idSlug']= $infoSlug['idSlug'];
 			 $save['Video']['image']= $image;
 			 $save['Video']['description']= $description;
+			 $save['Video']['category']= $category;
 	
 	         $this->save($save);
 	         return 1;

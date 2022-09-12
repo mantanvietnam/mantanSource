@@ -23,6 +23,7 @@
 	            	$this->setup();
 	            
                  	Controller::loadModel('Album');
+                    Controller::loadModel('Option');
 				 	
 				 	$dk= array();
                     $this->paginate = array(
@@ -36,6 +37,12 @@
                                             );
 
                     $return = $this->paginate("Album");
+
+                    $chuyenmuc= $this->Option->getOption('categoryAlbum');
+
+                    $chuyenmuc['Option']['value']['category']= (isset($chuyenmuc['Option']['value']['category']))?$chuyenmuc['Option']['value']['category']:array();
+    
+                    $this->set('group', $chuyenmuc['Option']['value']['category']);
                     
                     $this->set('listNotices', $return);
             }
@@ -55,6 +62,8 @@
             if($users)
             {
             	Controller::loadModel('Album');
+                Controller::loadModel('Option');
+
             	$this->setup();
             	$this->layout="default";
             	if($_POST['id']!='')
@@ -62,6 +71,12 @@
             		$id= new MongoId($_POST['id']);
 
 					$return= $this->Album->getAlbum($id);
+
+                    $chuyenmuc= $this->Option->getOption('categoryAlbum');
+
+                    $chuyenmuc['Option']['value']['category']= (isset($chuyenmuc['Option']['value']['category']))?$chuyenmuc['Option']['value']['category']:array();
+    
+                    $this->set('group', $chuyenmuc['Option']['value']['category']);
 
 					$this->set('news', $return);
 				}
@@ -82,6 +97,7 @@
 	            $title= $_POST['title'];
 				$lock= (int) $_POST['lock'];
 	            $image= $_POST['image'];
+                $category= $_POST['category'];
 
 	            $key= $_POST['key'];
 
@@ -103,7 +119,7 @@
 
 	            if($title != "" && $image != "")
 	            {
-                	$return= $this->Album->saveAlbumNew($time,$title,$image,$key,$slug,$lock,$id);
+                	$return= $this->Album->saveAlbumNew($time,$title,$image,$key,$slug,$lock,$id,$category);
                 }
                 
                 $this->redirect($urlLocal['urlAlbums'].'infoAlbum/'.$return);
@@ -195,6 +211,7 @@
                   $data= $this->Album->find('first',array('conditions'=>array('_id'=>$id)));
                   if($data){
                     $this->Slug->deleteSlug($data['Album']['slug']);
+                    $this->Slug->writeFileSlug();
                     $this->Album->delete($id);
                   }
                   
@@ -317,6 +334,93 @@
             $metaTitleMantan= 'Albums | '.$metaTitleMantan;
         
 		}
+
+        function cat($slug=null)
+        {
+            //Configure::write('debug', 2);
+            global $categoryAlbum;
+            global $isCategory;
+            global $infoSite;
+            
+            //$isCategory= true;
+            
+            $this->setup();
+            $this->layout='default';
+            
+            Controller::loadModel('Album');
+            Controller::loadModel('Option');
+            
+            $urlLocal= $this->getUrlLocal();
+            if(empty($slug)) $slug= $this->request->url;
+            $slug= str_replace('.html', '', $slug);
+            $category= $this->Option->getOption('categoryAlbum');
+            
+            $category= $this->Option->getcat($category['Option']['value']['category'],$slug,'slug');
+            
+            if($category)
+            {
+                $dk = array ('category' => (string) $category['id']);
+                
+                $page= (isset($_GET['page']))? (int) $_GET['page']:1;
+                if($page<=0) $page=1;
+                $limit= $infoSite['Option']['value']['postsOnThePage'];
+                $order=array('created' => 'desc','title'=>'asc');
+
+                $return = $this->Album->getPageData($page,$limit,$dk,$order);
+                
+                $totalData= $this->Album->find('count',array('conditions' => $dk));
+                $urlNow= curPageURL(1);
+        
+                $balance= $totalData%$limit;
+                $totalPage= ($totalData-$balance)/$limit;
+                if($balance>0)$totalPage+=1;
+                
+                $back=$page-1;$next=$page+1;
+                if($back<=0) $back=1;
+                if($next>=$totalPage) $next=$totalPage;
+                
+                if(isset($_GET['page'])){
+                    $urlPage= str_replace('&page='.$_GET['page'], '', $urlNow);
+                    $urlPage= str_replace('page='.$_GET['page'], '', $urlPage);
+                }else{
+                    $urlPage= $urlNow;
+                }
+
+                if(strpos($urlPage,'?')!== false){
+                    if(count($_GET)>1 ||  (count($_GET)==1 && !isset($_GET['page']))){
+                        $urlPage= $urlPage.'&page=';
+                    }else{
+                        $urlPage= $urlPage.'page=';
+                    }
+                }else{
+                    $urlPage= $urlPage.'?page=';
+                }
+            
+                $this->set('page', $page);
+                $this->set('totalPage', $totalPage);
+                $this->set('back', $back);
+                $this->set('next', $next);
+                $this->set('urlPage', $urlPage);
+                
+                $this->set('listAlbums', $return);
+                $this->set('category', $category);
+                
+                $categoryAlbum= $category;
+                
+              global $metaTitleMantan;
+                global $metaKeywordsMantan;
+                global $metaDescriptionMantan;
+                
+                $metaTitleMantan= (isset($category['name']))?$category['name']:'';
+                $metaKeywordsMantan= (isset($category['key']))?$category['key']:'';
+                $metaDescriptionMantan= (isset($category['description']))?$category['description']:'';
+            }
+            else
+            {
+                $this->redirect($urlLocal['urlHomes']);
+            }
+            
+        }  
          
     }
 ?>

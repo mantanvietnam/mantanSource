@@ -89,6 +89,17 @@
  	Router::connect($urlBase.'options/saveCategoryNotice/*', array('controller' => 'options', 'action' => 'saveCategoryNotice'));
  	Router::connect($urlBase.'options/deleteCatagery/*', array('controller' => 'options', 'action' => 'deleteCatagery'));
  	Router::connect($urlBase.'options/changeCategoryNotice/*', array('controller' => 'options', 'action' => 'changeCategoryNotice'));
+
+    Router::connect($urlBase.'options/categoryVideo/*', array('controller' => 'options', 'action' => 'categoryVideo'));
+    Router::connect($urlBase.'options/saveCategoryVideo/*', array('controller' => 'options', 'action' => 'saveCategoryVideo'));
+    Router::connect($urlBase.'options/deleteCategoryVideo/*', array('controller' => 'options', 'action' => 'deleteCategoryVideo'));
+    Router::connect($urlBase.'options/changeCategoryVideo/*', array('controller' => 'options', 'action' => 'changeCategoryVideo'));
+
+    Router::connect($urlBase.'options/categoryAlbum/*', array('controller' => 'options', 'action' => 'categoryAlbum'));
+    Router::connect($urlBase.'options/saveCategoryAlbum/*', array('controller' => 'options', 'action' => 'saveCategoryAlbum'));
+    Router::connect($urlBase.'options/deleteCategoryAlbum/*', array('controller' => 'options', 'action' => 'deleteCategoryAlbum'));
+    Router::connect($urlBase.'options/changeCategoryAlbum/*', array('controller' => 'options', 'action' => 'changeCategoryAlbum'));
+    
  	Router::connect($urlBase.'options/themes/*', array('controller' => 'options', 'action' => 'themes'));
  	Router::connect($urlBase.'options/changeTheme/*', array('controller' => 'options', 'action' => 'changeTheme'));
  	Router::connect($urlBase.'options/languages/*', array('controller' => 'options', 'action' => 'languages'));

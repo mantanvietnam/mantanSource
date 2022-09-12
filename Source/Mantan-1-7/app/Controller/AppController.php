@@ -268,6 +268,7 @@ class AppController extends Controller {
 	            	$menus= array();
 	            	$menus['title']= $languageMantan['system'];
 	                $menus['sub'][0]= array( 'name'=>$languageMantan['setting'],'url'=>$urlOptions.'infoSite','classIcon'=>'fa-wrench','permission'=>'infoSite');
+	                
 	                $menus['sub'][1]= array( 'name'=>$languageMantan['news'],
 			                				 'url'=>$urlNotices.'listNotices',
 			                				 'classIcon'=>'fa-newspaper-o',
@@ -276,9 +277,28 @@ class AppController extends Controller {
 			                							   array('name'=>$languageMantan['newsCategories'],'url'=>$urlOptions.'categoryNotice','permission'=>'categoryNotice')
 			                							) 
 			                			   );
+
 	                $menus['sub'][2]= array('name'=>$languageMantan['pages'],'url'=>$urlNotices.'listPages','classIcon'=>'fa-file-o','permission'=>'listPages');
-	                $menus['sub'][3]= array('name'=>$languageMantan['album'],'url'=>$urlAlbums.'listAlbums','classIcon'=>'fa-camera-retro','permission'=>'listAlbums');
-	                $menus['sub'][4]= array('name'=>$languageMantan['video'],'url'=>$urlVideos.'listVideos','classIcon'=>'fa-file-video-o','permission'=>'listVideos');
+	                
+
+	                $menus['sub'][3]= array( 'name'=>$languageMantan['album'],
+			                				 'url'=>$urlAlbums.'listAlbums',
+			                				 'classIcon'=>'fa-camera-retro',
+			                				 'permission'=>'listAlbums',
+			                				 'sub'=>array( array('name'=>$languageMantan['allPosts'],'url'=>$urlAlbums.'listAlbums','permission'=>'listAlbums'),
+			                							   array('name'=>$languageMantan['categories'],'url'=>$urlOptions.'categoryAlbum','permission'=>'categoryAlbum')
+			                							) 
+			                			   );
+	                
+	                $menus['sub'][4]= array( 'name'=>$languageMantan['video'],
+			                				 'url'=>$urlVideos.'listVideos',
+			                				 'classIcon'=>'fa-file-video-o',
+			                				 'permission'=>'listVideos',
+			                				 'sub'=>array( array('name'=>$languageMantan['allPosts'],'url'=>$urlVideos.'listVideos','permission'=>'listVideos'),
+			                							   array('name'=>$languageMantan['categories'],'url'=>$urlOptions.'categoryVideo','permission'=>'categoryVideo')
+			                							) 
+			                			   );
+	                
 	                $menus['sub'][5]= array('name'=>$languageMantan['fileManagement'],'url'=>$urlAdmins.'listFiles','classIcon'=>'fa-file-archive-o','permission'=>'listFiles');
 	                
 	                $menus['sub'][6]= array('name'=>$languageMantan['languages'],'url'=>$urlOptions.'languages','classIcon'=>'fa-language','permission'=>'languages');
