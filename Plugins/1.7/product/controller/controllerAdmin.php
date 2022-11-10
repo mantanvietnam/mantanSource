@@ -224,10 +224,10 @@
 				$info= $dataSend['info'];
 				$code= $dataSend['code'];
 				$manufacturerId= (isset($dataSend['manufacturerId']))? (int)$dataSend['manufacturerId']:'';
-				$price= (int)$dataSend['price'];
-				$priceOther= (int)$dataSend['priceOther'];
+				$price= (double)$dataSend['price'];
+				$priceOther= (double)$dataSend['priceOther'];
 				$typeMoneyId= (isset($dataSend['typeMoneyId']))? (int)$dataSend['typeMoneyId']:'';
-				$quantity= (int)$dataSend['quantity'];
+				$quantity= (double)$dataSend['quantity'];
 				$warranty= $dataSend['warranty'];
 				$lock= (int)$dataSend['lock'];
 				$id= $dataSend['id'];
@@ -264,8 +264,8 @@
 				
 				if($dateDiscountStart && $dateDiscountEnd)
 				{
-					$priceDiscount= (int) $dataSend['priceDiscount'];
-					$numberDiscount= (int) $dataSend['numberDiscount'];
+					$priceDiscount= (double) $dataSend['priceDiscount'];
+					$numberDiscount= (double) $dataSend['numberDiscount'];
 					$codeDiscount= explode(',', strtoupper($dataSend['codeDiscount']));
 				}
 				
@@ -1406,6 +1406,7 @@
 
 			if($news){
 				$listTypeMoney= $modelOption->getOption('productTypeMoney');
+				$listProperties= $modelOption->getOption('propertiesProduct');
 
 				foreach($news['Order']['listProduct'] as $key=>$product){
 					$data= $modelProduct->getProduct($product['id']);
@@ -1416,6 +1417,7 @@
 
 					$data['Product']['number']= $product['number'];
 					$data['Product']['price']= $product['price'];
+					$data['Product']['propertiesSelect']= $product['propertiesSelect'];
 					$data['Product']['codeDiscount']= (isset($product['codeDiscount']))? $product['codeDiscount']:'';
 
 					$news['Order']['listProduct'][$key]= $data['Product'];
@@ -1423,6 +1425,7 @@
 
 				setVariable('news',$news);
 				setVariable('listTypeMoney',$listTypeMoney);
+				setVariable('listProperties',$listProperties);
 
 			}else{
 				$modelOrder->redirect($urlHomes);

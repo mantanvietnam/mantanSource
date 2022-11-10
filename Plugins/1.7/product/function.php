@@ -651,7 +651,9 @@
 		global $modelOption;
 		global $urlLocal;
 		global $languageProduct;
-        global $settingProduct;
+    global $settingProduct;
+
+    $listProperties= $modelOption->getOption('propertiesProduct');
 
 		$content= $languageProduct['Hello'].' '.$fullNamUser.' !<br/>'.$languageProduct['YouHaveSuccessfullyOrdered'].':<br/><br/>';
 		
@@ -702,13 +704,24 @@
 								
 								$totalMoney+= $priceShow*$data['Product']['numberOrder'];
 								$totalMass+= $data['Product']['mass']*$data['Product']['numberOrder'];
+
+								// thuộc tính bổ sung
+                $propertiesSelectShow = '';
+
+                if(!empty($data['Product']['propertiesSelect'])){
+                    foreach($data['Product']['propertiesSelect'] as $key=>$propertiesSelect){
+                        if(!empty($listProperties['Option']['value']['allData'][$key]['allData'][$propertiesSelect])){
+                            $propertiesSelectShow .= '<p><b>'.$listProperties['Option']['value']['allData'][$key]['name'].'</b>: '.$listProperties['Option']['value']['allData'][$key]['allData'][$propertiesSelect]['name'].'</p>';
+                        }
+                    }
+                }
 							
 				$content .= '<tr>
 								<td>'.$number.'</td>
 								<td>
 									<a href="'.$data['Product']['images'][0].'"><img width="120" src="'.$data['Product']['images'][0].'" alt=""></a>
 								</td>
-								<td>'.$data['Product']['title'].'</td>
+								<td>'.$data['Product']['title'].$propertiesSelectShow.'</td>
 								<td>'.$data['Product']['numberOrder'].'</td>
 								<td>'.number_format($data['Product']['mass'],2).'</td>
 								<td>'.number_format($priceShow).' '.@$listTypeMoney['Option']['value']['allData'][$data['Product']['typeMoneyId']]['name'];

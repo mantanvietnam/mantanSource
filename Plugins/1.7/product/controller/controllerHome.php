@@ -1099,12 +1099,15 @@
 		global $modelOption;
 		$listTypeMoney= $modelOption->getOption('productTypeMoney');
 		$productTransportFee= $modelOption->getOption('productTransportFee');
+		$listProperties= $modelOption->getOption('propertiesProduct');
 
 		$listOrderProduct= (isset($_SESSION['orderProducts']))? $_SESSION['orderProducts']:array();
 		$infoUser= (isset($_SESSION['infoUser']))? $_SESSION['infoUser']:array();
 
 		setVariable('listTypeMoney',$listTypeMoney);
 		setVariable('productTransportFee',$productTransportFee);
+		setVariable('listProperties',$listProperties);
+
 		setVariable('listOrderProduct',$listOrderProduct);
 		setVariable('infoUser',$infoUser);
 	}
@@ -1139,11 +1142,21 @@
 					$product['Product']['codeDiscountInput']= $_SESSION['codeDiscountInput'];
 				}
 
+				if(!empty($dataSend['properties'])){
+					$dataSend['properties'] = str_replace('&quot;', '"', $dataSend['properties']);
+					$product['Product']['propertiesSelect'] = json_decode($dataSend['properties'], true);
+				}else{
+					$product['Product']['propertiesSelect'] = [];
+				}
+				
+
 				if(empty($_POST['numberOrder'])) $_POST['numberOrder']=1;
 
 				$product['Product']['numberOrder']= (int) $_POST['numberOrder'];
 				$product['Product']['dataSend']= $dataSend;
 				$listOrderProduct[]= $product;
+				
+
 				$_SESSION['orderProducts']= $listOrderProduct;
 			}
 			
@@ -1200,6 +1213,7 @@
                                                 'codeDiscount'=>$data['Product']['codeDiscountInput'],
                                                 'name'=>$data['Product']['title'],
                                                 'image'=>@$data['Product']['images'][0],
+                                                'propertiesSelect'=>@$data['Product']['propertiesSelect'],
                                             );
 						$priceShow= $data['Product']['priceDiscount'];
 
@@ -1217,6 +1231,7 @@
                                                 'price'=>$data['Product']['price'],
                                                 'name'=>$data['Product']['title'],
                                                 'image'=>@$data['Product']['images'][0],
+                                                'propertiesSelect'=>@$data['Product']['propertiesSelect'],
                                             );
 						$priceShow= $data['Product']['price'];
 					}
@@ -1267,6 +1282,11 @@
 
 				unset($_SESSION['orderProducts']); 
 				unset($_SESSION['codeDiscountInput']); 
+
+				if(function_exists('createPayNL')){
+					createPayNL($totalMoney, $fullname, $phone, $email, $idOrder);
+					die;
+				}
 				
 				if(isset($dataSend['redirect']) && $dataSend['redirect']!='')
 				{
